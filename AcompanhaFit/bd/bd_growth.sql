@@ -28,6 +28,3 @@ CREATE TABLE `Aluno` (
   `Senha` varchar(40) COLLATE latin1_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
-CREATE TABLE `Usuários` (
-  `ID_Usuário` int(11) NOT NULL
-)
