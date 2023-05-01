@@ -40,22 +40,6 @@
         $senha   = $conn->real_escape_string($_POST['senha']);
         
         $sql = "INSERT INTO Aluno (Nome, Gênero, Email, Altura, Peso, Senha) VALUES ('$nome','$genero','$email','$altura', '$peso', md5('$senha'))";
-        if ($result = $conn->query($sql)) {
-            $msg = "Registro cadastrado com sucesso! Você já pode realizar login.";
-            $_SESSION['nao_autenticado'] = true;
-            $_SESSION['mensagem_header'] = "Cadastro";
-            $_SESSION['mensagem']        = $msg;
-            header('location: /Acompanhafit/indexo.php');
-            exit();
-        } else {
-            $msg = "Erro executando INSERT: " . $conn->error . " Tente novo cadastro.";
-            $_SESSION['nao_autenticado'] = true;
-            $_SESSION['mensagem_header'] = "Cadastro";
-            $_SESSION['mensagem']        = $msg;
-            header('location: /Acompanhafit/indexo.php');
-    
-            exit();
-        }
     } elseif ($id == "Personal Trainer") {
         $sql = "SELECT Nome, Gênero, CREF, Senha FROM Personal "
 
@@ -65,22 +49,6 @@
         $senha1   = $conn->real_escape_string($_POST['senha']);
 
         $sql = "INSERT INTO Personal (Nome, Gênero, CREF, Senha) VALUES ('$nome','$genero','$cref', md5('$senha1'))";
-        if ($result = $conn->query($sql)) {
-            $msg = "Registro cadastrado com sucesso! Você já pode realizar login.";
-            $_SESSION['nao_autenticado'] = true;
-            $_SESSION['mensagem_header'] = "Cadastro";
-            $_SESSION['mensagem']        = $msg;
-            header('location: /Acompanhafit/indexo.php');
-            exit();
-        } else {
-            $msg = "Erro executando INSERT: " . $conn->error . " Tente novo cadastro.";
-            $_SESSION['nao_autenticado'] = true;
-            $_SESSION['mensagem_header'] = "Cadastro";
-            $_SESSION['mensagem']        = $msg;
-            header('location: /Acompanhafit/indexo.php');
-    
-            exit();
-        }
     } elseif($id == "Nutricionista") {
         $sql = "SELECT Nome, Gênero, CRN, Senha FROM Nutricionista "
 
@@ -90,8 +58,8 @@
         $senha2   = $conn->real_escape_string($_POST['senha']);
 
         $sql = "INSERT INTO Nutricionista (Nome, Gênero, CRN, Senha) VALUES ('$nome','$genero','$crn', md5('$senha2'))";
-
-        if ($result = $conn->query($sql)) {
+    }
+            if ($result = $conn->query($sql)) {
             $msg = "Registro cadastrado com sucesso! Você já pode realizar login.";
             $_SESSION['nao_autenticado'] = true;
             $_SESSION['mensagem_header'] = "Cadastro";
@@ -107,7 +75,6 @@
     
             exit();
         }
-    }
     header('location: indexo.php');
 
     $conn->close();
