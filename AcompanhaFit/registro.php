@@ -61,7 +61,7 @@
 
         $nome    = $conn->real_escape_string($_POST['nome']);
         $genero   = $conn->real_escape_string($_POST['genero']);
-        $cref   = $conn->real_escape_string($_POST['email']);
+        $cref   = $conn->real_escape_string($_POST['cref']);
         $senha1   = $conn->real_escape_string($_POST['senha']);
 
         $sql = "INSERT INTO Personal (Nome, Gênero, CREF, Senha) VALUES ('$nome','$genero','$cref', md5('$senha1'))";
@@ -86,7 +86,7 @@
 
         $nome    = $conn->real_escape_string($_POST['nome']);
         $genero   = $conn->real_escape_string($_POST['genero']);
-        $crn   = $conn->real_escape_string($_POST['email']);
+        $crn   = $conn->real_escape_string($_POST['crn']);
         $senha2   = $conn->real_escape_string($_POST['senha']);
 
         $sql = "INSERT INTO Nutricionista (Nome, Gênero, CRN, Senha) VALUES ('$nome','$genero','$crn', md5('$senha2'))";
