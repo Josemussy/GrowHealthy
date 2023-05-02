@@ -32,30 +32,33 @@
     if ($id == "Aluno") {
         $sql = "SELECT Nome, Gênero, Email, Altura, Peso, Senha FROM Aluno "
 
-        $nome    = $conn->real_escape_string($_POST['nome']);
-        $genero   = $conn->real_escape_string($_POST['genero']);
-        $email   = $conn->real_escape_string($_POST['email']);
-        $altura   = $conn->real_escape_string($_POST['altura']);
-        $peso   = $conn->real_escape_string($_POST['peso']);
-        $senha   = $conn->real_escape_string($_POST['senha']);
+        $nome    = $conn->real_escape_string($_POST['Nome']);
+        $genero   = $conn->real_escape_string($_POST['Genero']);
+        $email   = $conn->real_escape_string($_POST['Email']);
+        $altura   = $conn->real_escape_string($_POST['Altura']);
+        $peso   = $conn->real_escape_string($_POST['Peso']);
+        $login   = $conn->real_escape_string($_POST['Login']);
+        $senha   = $conn->real_escape_string($_POST['Senha']);
         
-        $sql = "INSERT INTO Aluno (Nome, Gênero, Email, Altura, Peso, Senha) VALUES ('$nome','$genero','$email','$altura', '$peso', md5('$senha'))";
+        $sql = "INSERT INTO Aluno (Nome, Gênero, Email, Altura, Peso, Senha) VALUES ('$nome','$genero','$email','$altura', '$peso', '$login', md5('$senha'))";
     } elseif ($id == "Personal Trainer") {
         $sql = "SELECT Nome, Gênero, CREF, Senha FROM Personal "
 
-        $nome    = $conn->real_escape_string($_POST['nome']);
-        $genero   = $conn->real_escape_string($_POST['genero']);
-        $cref   = $conn->real_escape_string($_POST['cref']);
-        $senha1   = $conn->real_escape_string($_POST['senha']);
+        $nome    = $conn->real_escape_string($_POST['Nome']);
+        $genero   = $conn->real_escape_string($_POST['Genero']);
+        $cref   = $conn->real_escape_string($_POST['Cref']);
+        $login   = $conn->real_escape_string($_POST['Login']);
+        $senha1   = $conn->real_escape_string($_POST['Senha']);
 
-        $sql = "INSERT INTO Personal (Nome, Gênero, CREF, Senha) VALUES ('$nome','$genero','$cref', md5('$senha1'))";
+        $sql = "INSERT INTO Personal (Nome, Gênero, CREF, Senha) VALUES ('$nome','$genero','$cref', '$login', md5('$senha1'))";
     } elseif($id == "Nutricionista") {
         $sql = "SELECT Nome, Gênero, CRN, Senha FROM Nutricionista "
 
-        $nome    = $conn->real_escape_string($_POST['nome']);
-        $genero   = $conn->real_escape_string($_POST['genero']);
-        $crn   = $conn->real_escape_string($_POST['crn']);
-        $senha2   = $conn->real_escape_string($_POST['senha']);
+        $nome    = $conn->real_escape_string($_POST['Nome']);
+        $genero   = $conn->real_escape_string($_POST['Genero']);
+        $crn   = $conn->real_escape_string($_POST['Crn']);
+        $login   = $conn->real_escape_string($_POST['Login']);
+        $senha2   = $conn->real_escape_string($_POST['Senha']);
 
         $sql = "INSERT INTO Nutricionista (Nome, Gênero, CRN, Senha) VALUES ('$nome','$genero','$crn', md5('$senha2'))";
     }
