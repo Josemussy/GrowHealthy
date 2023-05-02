@@ -2,12 +2,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE TABLE `medico` (
-  `ID_Medico` int(11) NOT NULL,
-  `CRM` varchar(15) NOT NULL,
-  `Nome` varchar(100) NOT NULL,
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE `Usuario` (
   `ID_Usuario` int(11) NOT NULL,
   `Nome` varchar(100) COLLATE latin1_general_ci NOT NULL,
