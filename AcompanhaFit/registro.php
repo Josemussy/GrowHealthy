@@ -30,7 +30,7 @@
     $id    = $conn->real_escape_string($_POST['usuario']);
 
     if ($id == "Aluno") {
-        $sql = "SELECT Nome, Gênero, Email, Altura, Peso, Senha FROM Aluno "
+        $sql = "SELECT Nome, Gênero, Email, Altura, Peso, Login, Senha FROM Aluno "
 
         $nome    = $conn->real_escape_string($_POST['Nome']);
         $genero   = $conn->real_escape_string($_POST['Genero']);
@@ -40,9 +40,9 @@
         $login   = $conn->real_escape_string($_POST['Login']);
         $senha   = $conn->real_escape_string($_POST['Senha']);
         
-        $sql = "INSERT INTO Aluno (Nome, Gênero, Email, Altura, Peso, Senha) VALUES ('$nome','$genero','$email','$altura', '$peso', '$login', md5('$senha'))";
+        $sql = "INSERT INTO Aluno (Nome, Gênero, Email, Altura, Peso, Login, Senha) VALUES ('$nome','$genero','$email','$altura', '$peso', '$login', md5('$senha'))";
     } elseif ($id == "Personal Trainer") {
-        $sql = "SELECT Nome, Gênero, CREF, Senha FROM Personal "
+        $sql = "SELECT Nome, Gênero, CREF, Login, Senha FROM Personal "
 
         $nome    = $conn->real_escape_string($_POST['Nome']);
         $genero   = $conn->real_escape_string($_POST['Genero']);
@@ -50,9 +50,9 @@
         $login   = $conn->real_escape_string($_POST['Login']);
         $senha1   = $conn->real_escape_string($_POST['Senha']);
 
-        $sql = "INSERT INTO Personal (Nome, Gênero, CREF, Senha) VALUES ('$nome','$genero','$cref', '$login', md5('$senha1'))";
+        $sql = "INSERT INTO Personal (Nome, Gênero, CREF, Login, Senha) VALUES ('$nome','$genero','$cref', '$login', md5('$senha1'))";
     } elseif($id == "Nutricionista") {
-        $sql = "SELECT Nome, Gênero, CRN, Senha FROM Nutricionista "
+        $sql = "SELECT Nome, Gênero, CRN, Login, Senha FROM Nutricionista "
 
         $nome    = $conn->real_escape_string($_POST['Nome']);
         $genero   = $conn->real_escape_string($_POST['Genero']);
@@ -60,7 +60,7 @@
         $login   = $conn->real_escape_string($_POST['Login']);
         $senha2   = $conn->real_escape_string($_POST['Senha']);
 
-        $sql = "INSERT INTO Nutricionista (Nome, Gênero, CRN, Senha) VALUES ('$nome','$genero','$crn', md5('$senha2'))";
+        $sql = "INSERT INTO Nutricionista (Nome, Gênero, CRN, Login, Senha) VALUES ('$nome','$genero','$crn', '$login', md5('$senha2'))";
     }
             if ($result = $conn->query($sql)) {
             $msg = "Registro cadastrado com sucesso! Você já pode realizar login.";
