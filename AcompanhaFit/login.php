@@ -40,7 +40,7 @@
             $_SESSION ['nao_autenticado'] = true;         
             $_SESSION ['mensagem_header'] = "Login";
             $_SESSION ['mensagem']        = "ERRO: Login ou Senha inválidos.";
-            header(); 
+            header('location: /AcompanhaFit/indexo.php'); 
             exit();
         }
     }
