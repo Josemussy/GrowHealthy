@@ -46,7 +46,7 @@
 
         $nome    = $conn->real_escape_string($_POST['Nome']);
         $genero   = $conn->real_escape_string($_POST['Genero']);
-        $cref   = $conn->real_escape_string($_POST['Cref']);
+        $cref   = $conn->real_escape_string($_POST['CREF']);
         $login   = $conn->real_escape_string($_POST['Login']);
         $senha1   = $conn->real_escape_string($_POST['Senha']);
 
@@ -56,7 +56,7 @@
 
         $nome    = $conn->real_escape_string($_POST['Nome']);
         $genero   = $conn->real_escape_string($_POST['Genero']);
-        $crn   = $conn->real_escape_string($_POST['Crn']);
+        $crn   = $conn->real_escape_string($_POST['CRN']);
         $login   = $conn->real_escape_string($_POST['Login']);
         $senha2   = $conn->real_escape_string($_POST['Senha']);
 
