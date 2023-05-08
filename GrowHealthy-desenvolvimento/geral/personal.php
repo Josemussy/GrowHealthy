@@ -4,7 +4,9 @@
     <p>
         <nav>
             <a class="w3-btn w3-theme w3-hover-white"
-               onclick="document.getElementById('Sobre').style.display='block'">Contatar Personal</a>
+               onclick="document.getElementById('Sobre').style.display='block'">Requerir personal/treino </a>
         </nav>
     </p>
 </footer>
+
+<?php require 'geral/rodape_personal.php';?>

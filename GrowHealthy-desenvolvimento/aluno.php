@@ -44,8 +44,8 @@
             <div class="w3-bar w3-theme w3-large" style="z-index:-1">
             <a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-light-gray w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open('LoginCadadstro')">☰</a>
                 <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0L').style.display='block'" href="javascript:void(0)" >Meu Perfil </a>
-                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0L').style.display='block'" href="javascript:void(0)" >Treinos </a>
-                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0C').style.display='block'"href="javascript:void(0)" ">Dietas</a>
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id1L').style.display='block'" href="javascript:void(0)" >Treinos </a>
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id2L').style.display='block'"href="javascript:void(0)" ">Dietas</a>
             </div>
 	    </div>
         <!-- Logo da página -->
@@ -105,7 +105,7 @@
                         </div>
                         <br>
                     </div>
-                </div>
+                </div>  
             
                 <!-- MODAL LOGIN: pop up para realizar Login --> 
                 <div id="id0L" class="w3-modal ">
@@ -113,26 +113,72 @@
                         <div class="w3-center"> 
                             <span onclick="document.getElementById('id0L').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
                         </div>
-                        <h2 class="w3-center w3-xxlarge">Login</h2>
+                        <h2 class="w3-center w3-xxlarge">Informação da conta</h2>
                         <form action="login.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-IE w3-margin">
                             <div class="w3-section">
-                            <label class="w3-text-IE"><b>Login do usuário</b></label>
-                            <input class="w3-input w3-border w3-margin-bottom" type="text" name="Login" placeholder="nome.sobrenome" required>
+                            <label class="w3-text-IE"><b>Email</b></label>
+                            <input class="w3-input w3-border" name="Email" type="text" placeholder="exemplo@gmail.com"
+                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> 
+                            <label class="w3-text-IE"><b>Celular</b></label>
+                            <input class="w3-input w3-border " name="Celular" id="Celular"  type="text" maxlength="15"
+                                    placeholder="(XX)XXXXX-XXXX" title="(XX)XXXXX-XXXX"  pattern="^\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$" required
+                                    onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                             <label class="w3-text-IE"><b>Senha</b></label>
                             <input class="w3-input w3-border" name="SenhaL" id="SenhaL" type="password"  
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}" placeholder="sua senha" 
                             title="Deve conter ao menos um número, uma letra maiúscula, uma letra minúscula, um caracter especial, e ter de 6 a 8 caracteres" 
                             required>
-                            <p>
-                            <input type="checkbox" id="chkL" class="w3-btn w3-theme"  onclick="mostrarOcultarSenha(2)"> <b>Mostrar senha</b>
-                            </p>
-                            <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
+                            <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Salvar alterações</button>
                             </div>
                         </form>
 
                         <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
                             <button onclick="document.getElementById('id0L').style.display='none'" type="button" class="w3-button w3-red">Cancelar</button>
                             <span class="w3-right w3-padding w3-hide-small"><a href="#">Esqueceu a senha?</a></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="id1L" class="w3-modal ">
+                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
+                        <div class="w3-center"> 
+                            <span onclick="document.getElementById('id1L').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+                        </div>
+                        <h2 class="w3-center w3-xxlarge">Meus Treinos</h2>
+                        <form action="login.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-IE w3-margin">
+                            <div class="w3-section">
+                            <label class="w3-text-IE"><b>Descrição:</b></label>
+                            <p/>
+                            <label class="w3-text-IE"><b>Data:</b></label>
+                            <p>
+                            </p>
+                            </div>
+                        </form>
+
+                        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+               
+                        </div>
+
+                    </div>
+                </div>
+                <div id="id2L" class="w3-modal ">
+                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
+                        <div class="w3-center"> 
+                            <span onclick="document.getElementById('id2L').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+                        </div>
+                        <h2 class="w3-center w3-xxlarge">Minhas dietas</h2>
+                        <form action="login.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-IE w3-margin">
+                            <div class="w3-section">
+                            <label class="w3-text-IE"><b>Descrição:</b></label>
+                            <p/>
+                            <label class="w3-text-IE"><b>Data:</b></label>
+                            <p>
+                            </p>
+                            </div>
+                        </form>
+
+                        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+               
                         </div>
 
                     </div>
@@ -223,7 +269,8 @@
                 <!-- FIM PRINCIPAL -->
                 </div>
                 <!-- Inclui RODAPE.PHP  -->
-                <?php require 'geral/rodape.php';?>
+                <?php require 'geral/rodape_nutri.php';?>
+                <?php require 'geral/rodape_personal.php';?>
             </div>
         </div>
 	</body>

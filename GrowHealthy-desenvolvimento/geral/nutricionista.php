@@ -4,7 +4,7 @@
     <p>
         <nav>
             <a class="w3-btn w3-theme w3-hover-white"
-               onclick="document.getElementById('Sobre').style.display='block'">Contatar Nutricionista</a>
+               onclick="document.getElementById('Sobre').style.display='block'">Requerir nutricionista/dieta </a>
         </nav>
     </p>
-</footer>
+</footer>   

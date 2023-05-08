@@ -195,14 +195,36 @@
                             <div class="w3-row w3-section">
                                 <div class="w3-rest ">
                                 <label class="w3-text-IE"><b>tipo</b>*</label> <br>
-                                <span class="w3-text-IE">Nutricionista <input type="radio" id="Nutricionista" name="tipo" value="2">  
-                                Personal <input onclick="openPopup()" type="radio" id="Personal" name="tipo" value="1"> 
-                                Aluno <button type="radio" id="Aluno" name="tipo" value="1" onclick="document.getElementById('id0C').style.display='block'"href="javascript:void(0)" "> 
+                                <span class="w3-text-IE">
+                                
+                                <label>Nutricionista </label>
+                                <input onchange="exibir_ocultar(this)" type="radio" id="nutricionista" name="tipo" value="nutricionista">
+
+                                <label>Personal </label>
+                                <input onchange="exibir_ocultar(this)" type="radio" id="personal" name="tipo" value="personal">
+
+                                <label>Aluno </label>
+                                <input onchange="exibir_ocultar(this)" type="radio" id="aluno" name="tipo" value="aluno">
                                 <!-- <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0C').style.display='block'"href="javascript:void(0)" ">Cadastro</a> -->
 
-                            </span> 
+                                </span> 
                                 </div>
                             </div>
+
+                            <div class="w3-row w3-section" id="cre" style="display: none;">
+                                <div class="w3-rest">
+                                <label class="w3-text-IE"><b>CRE</b>*</label>
+                                <input class="w3-input w3-border"  name="cre" type="text" placeholder=" " >
+                                </div>
+                            </div>
+
+                            <div class="w3-row w3-section" id="crn" style="display: none;">
+                                <div class="w3-rest">
+                                <label class="w3-text-IE"><b>CRN</b>*</label>
+                                <input class="w3-input w3-border"  name="crn" type="text" placeholder=" " >
+                                </div>
+                            </div>
+ 
                             <div class="w3-row w3-section">
                                 <div class="w3-rest">
                                 <label class="w3-text-IE"><b>Senha</b>*</label> 
@@ -240,6 +262,25 @@
                 </div>
                 <!-- Inclui RODAPE.PHP  -->
                 <?php require 'geral/rodape.php';?>
+
+                <script>
+                function exibir_ocultar(val){
+                    console.log(val)
+                    
+                    if(val.value == 'nutricionista'){
+                        document.getElementById('crn').style.display = 'block';
+                        document.getElementById('cre').style.display = 'none';
+                    } else if(val.value == 'personal'){
+                        document.getElementById('cre').style.display = 'block';
+                        document.getElementById('crn').style.display = 'none';
+
+                    } else if(val.value == 'aluno'){
+                        document.getElementById('cre').style.display = 'none';
+                        document.getElementById('crn').style.display = 'none';
+
+                    } 
+                }
+                </script>
             </div>
         </div>
 	</body>
