@@ -11,7 +11,7 @@
 <html>
 	<head>	
         <meta charset="UTF-8">
-		<title>Grow Health</title>
+		<title>Aluno</title>
 		<link rel="icon" type="image/png" href="imagens/IE_favicon.jpg"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -43,8 +43,9 @@
             </div>
             <div class="w3-bar w3-theme w3-large" style="z-index:-1">
             <a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-light-gray w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open('LoginCadadstro')">☰</a>
-                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0L').style.display='block'" href="javascript:void(0)" >Login</a>
-                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0C').style.display='block'"href="javascript:void(0)" ">Cadastro</a>
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0L').style.display='block'" href="javascript:void(0)" >Meu Perfil </a>
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0L').style.display='block'" href="javascript:void(0)" >Postar Treino </a>
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0C').style.display='block'"href="javascript:void(0)" ">Alunos</a>
             </div>
 	    </div>
         <!-- Logo da página -->
@@ -70,8 +71,9 @@
         <!-- Conteúdo PRINCIPAL: deslocado para direita em 270 pixels quando a sidebar é visível -->
 		<div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
             <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey" >
-                <h1 class="w3-jumbo">Como Funciona o Nosso Sistema</h1>
-                <img src="imagens/fit.png" class="w3-round-xxlarge" width="70%" style="max-width:500px">   
+                <h1 class="w3-jumbo">Painel Personal</h1>
+                <h3 class="">Funcionalidades:</h3>
+                <!-- <img src="imagens/fit.png" class="w3-round-xxlarge" width="70%" style="max-width:500px">    -->
                                 
                 <!-- Login Fail Modal --> 
                 <!-- -->
@@ -171,13 +173,6 @@
                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> 
                                 </div>
                             </div>
-                            <div class="w3-row w3-section" onclick="openPopup()">
-                                <div class="w3-rest">
-                                <label class="w3-text-IE"><b>CPF</b>*</label> 
-                                <input class="w3-input w3-border" name="Email" type="text" placeholder="000.000.000-00"
-                                       pattern="/^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/"> 
-                                </div>
-                            </div>
                             <div class="w3-row w3-section">
                                 <div class="w3-rest">
                                 <label class="w3-text-IE"><b>Nascimento</b>*</label> 
@@ -190,17 +185,6 @@
                                 <label class="w3-text-IE"><b>Gênero</b>*</label> <br>
                                 <span class="w3-text-IE">Feminino <input type="radio" id="Feminino" name="genero" value="2">  
                                 Masculino <input type="radio" id="Masculino" name="genero" value="1"> </span> 
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-rest ">
-                                <label class="w3-text-IE"><b>tipo</b>*</label> <br>
-                                <span class="w3-text-IE">Nutricionista <input type="radio" id="Nutricionista" name="tipo" value="2">  
-                                Personal <input onclick="openPopup()" type="radio" id="Personal" name="tipo" value="1"> 
-                                Aluno <button type="radio" id="Aluno" name="tipo" value="1" onclick="document.getElementById('id0C').style.display='block'"href="javascript:void(0)" "> 
-                                <!-- <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0C').style.display='block'"href="javascript:void(0)" ">Cadastro</a> -->
-
-                            </span> 
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
@@ -235,7 +219,7 @@
                     </div>
                 </div>
 
-                <?php require 'geral/sobre.php';?>
+                <?php require 'geral/IA.php';?>
                 <!-- FIM PRINCIPAL -->
                 </div>
                 <!-- Inclui RODAPE.PHP  -->

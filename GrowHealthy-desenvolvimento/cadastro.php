@@ -37,6 +37,8 @@
     $senha   = $conn->real_escape_string($_POST['Senha']);   // prepara a string recebida para ser utilizada em comando SQL
     $dt_nasc = $conn->real_escape_string($_POST['dt_nasc']); // prepara a string recebida para ser utilizada em comando SQL
     $genero  = $conn->real_escape_string($_POST['genero']);  // prepara a string recebida para ser utilizada em comando SQL
+    $cpf  = $conn->real_escape_string($_POST['cpf']);  // prepara a string recebida para ser utilizada em comando SQL
+    $tipo  = $conn->real_escape_string($_POST['tipo']);  // prepara a string recebida para ser utilizada em comando SQL
 
     //Criptografa Senha
 	$md5Senha = md5($senha);
