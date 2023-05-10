@@ -31,6 +31,7 @@ CREATE TABLE `Aluno` (
   `Email` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
   'Altura' double(11) NOT NULL,
   'Peso' int(200) NOT NULL,
+  'Treino' varchar(800) COLLATE latin1_general_ci NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 ALTER TABLE `Personal`
