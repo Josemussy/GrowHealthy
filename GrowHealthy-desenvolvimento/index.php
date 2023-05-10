@@ -137,12 +137,12 @@
                 </div>
                 <!-- MODAL CADASTRO: pop up para realizar Cadastro - -->  
                 <div id="id0C" class="w3-modal">
-                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
+                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
                         <div class="w3-center"> 
                             <span onclick="document.getElementById('id0C').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
                         </div>
                         <h2 class="w3-center w3-xxlarge">Cadastrar</h2>
-                        <form action="cadastro.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-margin">
+                        <form action="cadastro.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-margin" >
                             <div class="w3-row w3-section">
                                 <div class="w3-rest">
                                 <label class="w3-text-IE"><b>Nome de usuário</b>*</label>
@@ -173,18 +173,21 @@
                             </div>
                             <div class="w3-row w3-section" onclick="openPopup()">
                                 <div class="w3-rest">
-                                <label class="w3-text-IE"><b>CPF</b>*</label> 
-                                <input class="w3-input w3-border" name="Email" type="text" placeholder="000.000.000-00"
-                                       pattern="/^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/"> 
+                                    <label class="w3-text-IE"><b>CPF</b>*</label> 
+                                    <input class="w3-input w3-border" name="cpf" type="text" placeholder="000.000.000-00"
+                                    pattern=""^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{11}$" oninput="this.value=this.value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/,'$1.$2.$3-$4').replace(/\D/g,'')" maxlength="11"> 
                                 </div>
-                            </div>
+                              </div>
+
                             <div class="w3-row w3-section">
                                 <div class="w3-rest">
-                                <label class="w3-text-IE"><b>Nascimento</b>*</label> 
-                                <input class="w3-input w3-border" type="date" name="dt_nasc" id="dt_nasc" min="1930-01-01" 
-                                       max="<?= date('Y-m-d'); ?>" required>
+                                    <label class="w3-text-IE"><b>Data</b>*</label> 
+                                    <input class="w3-input w3-border" type="date" name="data" id="data" 
+                                        pattern="^(?!0000)[0-9]{4}-(?!(00))[0-9]{2}-(?!00)[0-9]{2}$" 
+                                        min="1930-01-01" max="2012-01-01" required>
                                 </div>
                             </div>
+
                             <div class="w3-row w3-section">
                                 <div class="w3-rest ">
                                 <label class="w3-text-IE"><b>Gênero</b>*</label> <br>
@@ -224,6 +227,29 @@
                                 <input class="w3-input w3-border"  name="crn" type="text" placeholder=" " >
                                 </div>
                             </div>
+
+                            <div class="w3-row w3-section" id="idade" style="display: none;">
+                                <div class="w3-rest">
+                                <label class="w3-text-IE"><b>Idade</b>*</label>
+                                <input class="w3-input w3-border"  name="idade" type="text" placeholder=" " >
+                                </div>
+                            </div>
+
+                            <div class="w3-row w3-section" id="peso" style="display: none;">
+                                <div class="w3-rest">
+                                <label class="w3-text-IE"><b>Peso</b>*</label>
+                                <input class="w3-input w3-border"  name="peso" type="text" placeholder=" " >
+                                </div>
+                            </div>
+
+                            <div class="w3-row w3-section" id="descricao" style="display: none;">
+                                <div class="w3-rest">
+                                    <label class="w3-text-IE"><b>Descrição</b>*</label>
+                                    <textarea class="w3-input w3-border" name="descricao" placeholder=" " style="line-height: 1.5; max-width: 435px;"></textarea>
+                                </div>
+                            </div>
+
+
  
                             <div class="w3-row w3-section">
                                 <div class="w3-rest">
@@ -270,15 +296,33 @@
                     if(val.value == 'nutricionista'){
                         document.getElementById('crn').style.display = 'block';
                         document.getElementById('cre').style.display = 'none';
+                        document.getElementById('idade').style.display = 'none';
+                        document.getElementById('peso').style.display = 'none';
+                        document.getElementById('descricao').style.display = 'none';
                     } else if(val.value == 'personal'){
                         document.getElementById('cre').style.display = 'block';
                         document.getElementById('crn').style.display = 'none';
+                        document.getElementById('idade').style.display = 'none';
+                        document.getElementById('peso').style.display = 'none';
+                        document.getElementById('descricao').style.display = 'none';
 
                     } else if(val.value == 'aluno'){
                         document.getElementById('cre').style.display = 'none';
                         document.getElementById('crn').style.display = 'none';
+                        document.getElementById('idade').style.display = 'block';
+                        document.getElementById('peso').style.display = 'block';
+                        document.getElementById('descricao').style.display = 'block';
 
                     } 
+                }
+
+                function formatCpf(cpfInput) {
+                let cpf = cpfInput.value.replace(/\D/g, '');
+                cpf = cpf.padStart(11, '0');
+                cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+                cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+                cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                cpfInput.value = cpf;
                 }
                 </script>
             </div>
