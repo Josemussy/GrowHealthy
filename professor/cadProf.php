@@ -85,7 +85,7 @@
 
 				?>
 						<div class="w3-container w3-theme">
-							<h2>Altere os dados do Professor Cód. = [<?php echo $id_usuario; ?>]</h2>
+							<h2>Altere os dados do Personal Cód. = [<?php echo $id_usuario; ?>]</h2>
 						</div>
 						<form class="w3-container" action="cadProf_exe.php" method="post" enctype="multipart/form-data">
 							<table class='w3-table-all'>
@@ -170,7 +170,7 @@
 					<?php
 					} else { ?>
 						<div class="w3-container w3-theme">
-							<h2>Professor inexistente</h2>
+							<h2>Personal inexistente</h2>
 						</div>
 						<br>
 				<?php
