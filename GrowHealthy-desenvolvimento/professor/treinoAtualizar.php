@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="../css/customize.css">
 		<script type="text/javascript" src="../js/myScript.js"></script>
 	</head>
-<body onload="w3_show_nav('menuAluno')" >
+<body>
 	<!-- Inclui MENU.PHP  -->
 	<?php require '../geral/menuPerfilProf.php'; ?>
 	<?php require '../bd/conectaBD.php'; ?>
@@ -125,8 +125,8 @@
 								<tr>
 									<td colspan="2" style="text-align:center">
 									<p>
-										<input type="submit" value="Postar Treino" class="w3-btn w3-red">
-										<input type="button" value="Cancelar" class="w3-btn w3-theme" onclick="window.location.href='medListar.php'">
+										<input type="submit" value="Postar Treino" class="w3-btn w3-red" onclick="window.location.href='alunoListar.php'">
+										<input type="button" value="Cancelar" class="w3-btn w3-theme" onclick="window.location.href='alunoListar.php'">
 									</p>
 									</td>
 								</tr>
