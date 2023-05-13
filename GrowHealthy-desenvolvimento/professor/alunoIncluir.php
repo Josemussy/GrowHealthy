@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../css/customize.css">
 	
 </head>
-<body  onload="w3_show_nav('menuAluno')">
+<body>
 
 <!-- Inclui MENU.PHP  -->
 <?php require '../geral/menuPerfilProf.php'; ?>
