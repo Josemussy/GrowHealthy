@@ -10,7 +10,7 @@
 <html>
 	<head>
 	  <meta charset="UTF-8">
-	  <title>IE - Instituição de Ensino</title>
+	  <title>GrowHealthy</title>
 	  <link rel="icon" type="image/png" href="imagens/IE_favicon.png" />
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -39,16 +39,16 @@
 		echo "</p> "
 		?>
 		<div class="w3-container w3-theme">
-		<h2>Atualização de Professor</h2>
+		<h2>Atualização de Personal</h2>
 		</div>
 		<!-- Acesso ao BD-->
 		<?php
 			// Recebe os dados que foram preenchidos no formulário, com os valores que serão atualizados
-			$id      = $_POST['Id'];  // identifica o registro a ser alterado
+			$cref      = $_POST['CREF'];  // identifica o registro a ser alterado
 			$nome    = $_POST['Nome'];
 			$celular = $_POST['Celular'];
-			$login   = $_POST['Login'];
-			$dtNasc  = $_POST['DataNasc'];
+			$login   = $_POST['login'];
+			$dtNasc  = $_POST['dt_nasc'];
 			$genero  = $_POST['Genero'];
 			
 			
@@ -68,12 +68,6 @@
 			<?php
 		
 			// Faz Update na Base de Dados
-			if ($_FILES['Imagem']['size'] == 0) { // Não recebeu uma imagem binária
-				$sql = "UPDATE TB_Usuario SET Nome = '$nome', Celular = '$celular', DataNasc = '$dtNasc', Login = '$login' , Senha = '$md5Senha' WHERE ID_Usuario = $id";
-			}else{
-				$imagem = addslashes(file_get_contents($_FILES['Imagem']['tmp_name'])); // Prepara para salvar em BD
-				$sql = "UPDATE TB_Usuario SET Nome = '$nome', Celular = '$celular', DataNasc = '$dtNasc', Login = '$login' , Senha = '$md5Senha', Foto = '$imagem' WHERE ID_Usuario = $id";	
-			}
 
 			echo "<div class='w3-responsive w3-card-4'>";
 			if ($result = $conn->query($sql)) {
