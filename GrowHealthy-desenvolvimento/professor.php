@@ -9,7 +9,7 @@
 
 <html>
 	<head>	
-		<title>IE - Instituição de Ensino</title>
+		<title>GrowHealthy</title>
 		<link rel="icon" type="image/png" href="imagens/IE_favicon.png"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -23,7 +23,7 @@
 		<div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
 			<div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
-				<h1 class="w3-jumbo">Controle Acadêmico: Professores</h1>
+				<h1 class="w3-jumbo">Controle: Personal</h1>
 
 				<img src="imagens/professor.png" class="w3-round-xxlarge" width="70%"  style="max-width:500px">
 
