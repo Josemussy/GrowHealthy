@@ -11,7 +11,7 @@
 <html>
 	<head>	
         <meta charset="UTF-8">
-		<title>Grow Health</title>
+		<title>GrowHealthy</title>
 		<link rel="icon" type="image/png" href="imagens/IE_favicon.jpg"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -21,13 +21,13 @@
 	<body >  
         <?php
             session_start();
-            if (isset($_SESSION['nomeTipoUsu'])) {                                  // Se existe usuário logado, verifica o tipo
-                if ($_SESSION['nomeTipoUsu'] == 'Administrador'){
-                    $url = 'location: /SiteSample2023/professor.php';	             
+            if (isset($_SESSION['tipo'])) {                                  // Se existe usuário logado, verifica o tipo
+                if ($_SESSION['tipo'] == 'Administrador'){
+                    $url = 'location: /GrowHealthy-desenvolvimento/professor.php';	             
                     header($url);                                         	  // Vai para a página inicial de Administrador
                     exit();
-                }else if ($_SESSION['nomeTipoUsu'] == 'Professor'){
-                    $url = 'location: /SiteSample2023/professor/perfilProf.php';	 
+                }else if ($_SESSION['tipo'] == 'Professor'){
+                    $url = 'location: /GrowHealthy-desenvolvimento/professor/perfilProf.php';	 
                     header($url);                                         	  // Vai para a página inicial de Professor
                     exit();
                 }
@@ -290,18 +290,18 @@
                     
                     if(val.value == 'nutricionista'){
                         document.getElementById('crn').style.display = 'block';
-                        document.getElementById('cre').style.display = 'none';
+                        document.getElementById('cref').style.display = 'none';
                         document.getElementById('peso').style.display = 'none';
                         document.getElementById('altura').style.display = 'none';
 
                     } else if(val.value == 'personal'){
-                        document.getElementById('cre').style.display = 'block';
+                        document.getElementById('cref').style.display = 'block';
                         document.getElementById('crn').style.display = 'none';
                         document.getElementById('peso').style.display = 'none';
                         document.getElementById('altura').style.display = 'none';
 
                     } else if(val.value == 'aluno'){
-                        document.getElementById('cre').style.display = 'none';
+                        document.getElementById('cref').style.display = 'none';
                         document.getElementById('crn').style.display = 'none';
                         document.getElementById('peso').style.display = 'block';
                         document.getElementById('altura').style.display = 'block';
