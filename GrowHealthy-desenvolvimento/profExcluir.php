@@ -10,7 +10,7 @@
 <html>
 <head>
 
-    <title>IE - Instituição de Ensino</title>
+    <title>GrowHealthy</title>
     <link rel="icon" type="image/png" href="imagens/IE_favicon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -51,26 +51,26 @@
 				}
 
 
-				$id=$_GET['id'];
+				$cref=$_GET['CREF'];
 				
 				// Faz Select na Base de Dados
-				$sql = "SELECT ID_usuario, Nome, Celular, DataNasc, Login FROM TB_Usuario WHERE ID_usuario = $id";
+				$sql = "SELECT CREF, Nome, Celular, dt_nasc, login FROM Personal WHERE CREF = $cref";
 				//Inicio DIV form
 				echo "<div class='w3-responsive w3-card-4'>";  
 				if ($result = $conn->query($sql)) {
 					if ($result->num_rows == 1) {
 						$row   = $result->fetch_assoc();
-						$dataN = explode('-', $row["DataNasc"]);
+						$dataN = explode('-', $row["dt_nasc"]);
 						$ano = $dataN[0];
 						$mes = $dataN[1];
 						$dia = $dataN[2];
 						$nova_data = $dia . '/' . $mes . '/' . $ano;
 			?>
 						<div class="w3-container w3-theme">
-							<h2>Exclusão do Professor Cód. = [<?php echo $row['ID_usuario']; ?>]</h2>
+							<h2>Exclusão do Personal</h2>
 						</div>
 						<form class="w3-container" action="ProfExcluir_exe.php" method="post" onsubmit="return check(this.form)">
-							<input type="hidden" id="Id" name="Id" value="<?php echo $row['ID_usuario']; ?>">
+							<input type="hidden" id="Id" name="Id" value="<?php echo $row['CREF']; ?>">
 							<p>
 							<label class="w3-text-IE"><b>Nome: </b> <?php echo $row['Nome']; ?> </label></p>
 							<p>
@@ -78,7 +78,7 @@
 							<p>
 							<label class="w3-text-IE"><b>Data de Nascimento: </b><?php echo $nova_data; ?></label></p>
 							<p>
-							<label class="w3-text-IE"><b>Login: </b><?php echo $row['Login']; ?></label></p>
+							<label class="w3-text-IE"><b>Login: </b><?php echo $row['login']; ?></label></p>
 							<p>
 							<input type="submit" value="Confirma exclusão?" class="w3-btn w3-red" >
 							<input type="button" value="Cancelar" class="w3-btn w3-theme" onclick="window.location.href='profListar.php'"></p>
@@ -86,7 +86,7 @@
 			<?php 
 					}else{?>
 						<div class="w3-container w3-theme">
-						<h2>Tentativa de exclusão de Professor inexistente</h2>
+						<h2>Tentativa de exclusão de Personal inexistente</h2>
 						</div>
 						<br>
 					<?php }
