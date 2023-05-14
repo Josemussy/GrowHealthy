@@ -8,7 +8,7 @@
 <!-- Login.php --> 
 	<head>
       <meta charset="UTF-8">  
-	  <title>IE - Instituição de Ensino</title>
+	  <title>GrowHealthy</title>
 	  <link rel="icon" type="image/png" href="imagens/IE_favicon.png" />
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -33,23 +33,23 @@
     
 
     // Faz Select na Base de Dados
-    $sql = "SELECT ID_Usuario,nome, t.nomeTipo FROM TB_Usuario as U, TB_TipoUsuario as T WHERE u.ID_TipoUsu = t.ID_TipoUsu AND login = '$usuario' AND senha = md5('$senha')";
+    $sql = "SELECT CRE,nome, t.nomeTipo FROM TB_Usuario as U, TB_TipoUsuario as T WHERE u.ID_TipoUsu = t.ID_TipoUsu AND login = '$usuario' AND senha = md5('$senha')";
 
     if ($result = $conn->query($sql)) {
         if ($result->num_rows == 1) {         // Deu match: login e senha combinaram
             $row = $result->fetch_assoc();
             $_SESSION ['login']       = $usuario;
             $_SESSION ['nomeTipoUsu'] = $row['nomeTipo'];
-            $_SESSION ['ID_Usuario']  = $row['ID_Usuario'];
+            $_SESSION ['CREF']  = $row['CREF'];
             $_SESSION ['nome']        = $row['nome'];
             unset($_SESSION['nao_autenticado']);                         // Agora está logado
             if( $_SESSION ['nomeTipoUsu'] == 'Administrador'){           
                 $conn->close();  //Encerra conexao com o BD
-                header('location: /SiteSample2023/professor.php');  // Perfil Administrador
+                header('location: /GrowHealthy-desenvolvimento/professor.php');  // Perfil Administrador
                 exit();
             }else {  
                 $conn->close();  //Encerra conexao com o BD                               
-                header('location: /SiteSample2023/professor/perfilProf.php');  // Perfil Professor   
+                header('location: /GrowHealthy-desenvolvimento/professor/perfilProf.php');  // Perfil Professor   
                 exit();
             }
         }else{
