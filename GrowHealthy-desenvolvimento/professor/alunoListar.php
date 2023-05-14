@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <title>IE - Instituição de Ensino</title>
+    <title>GrowHealthy</title>
     <link rel="icon" type="image/png" href="imagens/IE_favicon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -54,13 +54,12 @@
 
 
                 // Faz Select na Base de Dados
-                $sql = "SELECT CPF_Aluno, Nome, Celular, DataNasc, Login FROM Aluno;
+                $sql = "SELECT CPF_Aluno, Nome, Celular, dt_nasc, login FROM Aluno";
                 echo "<div class='w3-responsive w3-card-4'>";
                 if ($result = $conn->query($sql)) {
                     echo "<table class='w3-table-all'>";
                     echo "	<tr>";
-                    echo "	  <th>Código</th>";
-                    echo "	  <th>Imagem</th>";
+                    echo "	  <th>CPF_Aluno</th>";
                     echo "	  <th>Nome</th>";
                     echo "	  <th>Celular</th>";
                     echo "	  <th>Data Nascimento</th>";
@@ -71,28 +70,16 @@
                     if ($result->num_rows > 0) {
                         // Apresenta cada linha da tabela
                         while ($row = $result->fetch_assoc() ) {
-                            $dataN = explode('-', $row["DataNasc"]);
+                            $dataN = explode('-', $row["dt_nasc"]);
                             $ano = $dataN[0];
                             $mes = $dataN[1];
                             $dia = $dataN[2];
-                            $cod = $row["ID_Usuario"];
+                            $cod = $row["CPF_Aluno"];
                             $nova_data = $dia . '/' . $mes . '/' . $ano;
                             echo "<tr>";
                             echo "<td>";
                             echo $cod;
                             echo "</td>";
-                            if ($row['Foto']) {?>
-                                <td>
-                                    <img id="imagemSelecionada" class="w3-circle w3-margin-top" src="data:../image/png;base64,<?= base64_encode($row['Foto']) ?>" />
-                                </td><td>
-                                <?php
-                            } else {
-                                ?>
-                                <td>
-                                    <img id="imagemSelecionada" class="w3-circle w3-margin-top" src="../imagens/pessoa.jpg" />
-                                </td><td>
-                                <?php
-                            }
                             echo $row["Nome"];
                             echo "</td><td>";
                             echo $row["Celular"];
@@ -101,7 +88,7 @@
                             echo "</td><td>";
                             echo $row["Login"];
                             echo "</td><td>";
-                            //Atualizar e Excluir registro de prof
+                            //Atualizar e Excluir registro de personal
             ?>                      
                             <a href='treinoAtualizar.php?id=<?php echo $cod; ?>'><img src='../imagens/Edit.png' title='Postar Treino' width='32'></a>
                             </td><td>
