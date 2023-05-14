@@ -14,11 +14,11 @@
 			$url = substr($url,strrpos($url,"\\/"),strlen($url));  // Retira 2o. '/', se ainda houver esse caracter
 			$url = strstr($url, '/',true);
 		}
-		if ($_SESSION['nomeTipoUsu'] == 'Professor'){
+		if ($_SESSION['tipo'] == 'personal'){
 			$url = "Location: /" . $url . "/professor/perfilProf.php";	// Monta página para reurlecionamento
 			header($url);                                         		// Vai para a página de login / inicial
 			exit();
-		}else if ($_SESSION['nomeTipoUsu'] != 'Administrador'){     	// Não é Professor nem Administrador
+		}else if ($_SESSION['tipo'] != 'Administrador'){     	// Não é Professor nem Administrador
 			$url = "Location: " . $url . "/index.php";         			// Monta página para reurlecionamento
 			header($url);												// Vai para a página de login / inicial
 			exit();
@@ -32,7 +32,7 @@
 			</div>
 			<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small">
 				<div class="w3-right"><?php 
-					echo $_SESSION['nomeTipoUsu'] . "(a):&nbsp;";
+					echo $_SESSION['tipo'] . "(a):&nbsp;";
 					echo $_SESSION['nome']; 
 					?>&nbsp;<a href="logout.php" class="w3-red" style="text-decoration:none; letter-spacing:1px">&nbsp;Sair&nbsp;</a>
 				</div >
@@ -60,9 +60,6 @@
 				<h3>Menu Personais</h3>
 			</div>
 			<a class="w3-bar-item w3-button" href="profListar.php">Relação de Personais</a>
-			<a class="w3-bar-item w3-button" href="profIncluir.php">Contratação de Personais </a>
-
-
 		</div>
 	</div>
 
