@@ -11,7 +11,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>IE - Instituição de Ensino</title>
+	<title>GrowHealthy</title>
 	<link rel="icon" type="image/png" href="../imagens/IE_favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -42,7 +42,7 @@
 
 				<!-- Acesso ao BD-->
 				<?php
-				$id = $_SESSION['Personal'];
+				$cref = $_SESSION['CREF'];
 
 				// Cria conexão
 				$conn = new mysqli($servername, $username, $password, $database);
@@ -54,22 +54,21 @@
 
 
 				// Faz Select na Base de Dados
-				$sql = "SELECT CREF, Nome, Celular, DataNasc Login FROM Personal;
+				$sql = "SELECT CREF, Nome, Celular, dt_nasc, login FROM Personal";
 
 				//Inicio DIV form
 				echo "<div class='w3-responsive w3-card-4'>";
 				if ($result = $conn->query($sql)) {
 					if ($result->num_rows == 1) {
 						$row = $result->fetch_assoc();
-						$genero     = $row['ID_Genero'];
-						$id_usuario = $row['ID_Usuario'];
+						$genero     = $row['Genero'];
 						$nome       = $row['Nome'];
 						$celular    = $row['Celular'];
-						$dataNasc   = $row['DataNasc'];
-						$login      = $row['Login'];
+						$dataNasc   = $row['dt_nasc'];
+						$login      = $row['login'];
 
 						// Faz Select na Base de Dados
-						$sqlG = "SELECT CPF_Aluno, Nome FROM Aluno";
+						$sqlG = "SELECT CREF, Nome FROM Personal";
 
 						$optionsGenero = array();
 
@@ -78,20 +77,20 @@
 								$selected = "";
 								if ($row['Aluno'] == $genero)
 									$selected = "selected";
-								array_push($optionsGenero, "\t\t\t<option " . $selected . " value='" . $row["Aluno"] . "'>" . $row["Nome"] . "</option>\n");
+								array_push($optionsGenero, "\t\t\t<option " . $selected . " value='" . $row["Personal"] . "'>" . $row["Nome"] . "</option>\n");
 							}
 						}
 
 				?>
 						<div class="w3-container w3-theme">
-							<h2>Altere os dados do Personal Cód. = [<?php echo $id_usuario; ?>]</h2>
+							<h2>Altere os dados do Personal</h2>
 						</div>
 						<form class="w3-container" action="cadProf_exe.php" method="post" enctype="multipart/form-data">
 							<table class='w3-table-all'>
 								<tr>
 									<td style="width:50%;">
 										<p>
-											<input type="hidden" id="Id" name="Id" value="<?php echo $id_usuario; ?>">
+											<input type="hidden" id="Id" name="Id" value="<?php echo $cref; ?>">
 										<p>
 											<label class="w3-text-IE"><b>Nome</b></label>
 											<input class="w3-input w3-border w3-sand" name="Nome" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" title="Nome entre 10 e 100 letras." value="<?php echo $nome; ?>" required>
@@ -102,7 +101,7 @@
 										</p>
 										<p>
 											<label class="w3-text-IE"><b>Data de Nascimento</b></label>
-											<input class="w3-input w3-border w3-sand" name="DataNasc" type="date" pattern="((0[1-9])|([1-2][0-9])|(3[0-1]))\/((0[1-9])|(1[0-2]))\/((19|20)[0-9][0-9])" placeholder="dd/mm/aaaa" title="dd/mm/aaaa" title="Formato: dd/mm/aaaa" value="<?php echo $dataNasc; ?>">
+											<input class="w3-input w3-border w3-sand" name="dt_nasc" type="date" pattern="((0[1-9])|([1-2][0-9])|(3[0-1]))\/((0[1-9])|(1[0-2]))\/((19|20)[0-9][0-9])" placeholder="dd/mm/aaaa" title="dd/mm/aaaa" title="Formato: dd/mm/aaaa" value="<?php echo $dataNasc; ?>">
 										</p>
 
 										<p><label class="w3-text-IE"><b>Gênero</b>*</label>
@@ -118,7 +117,7 @@
 
 										<p>
 											<label class="w3-text-IE"><b>Login</b></label>
-											<input class="w3-input w3-border w3-sand" name="Login" type="text" pattern="[a-zA-Z]{2,20}.[a-zA-Z]{2,20}" title="Formato: nome.sobrenome" value="<?php echo $login; ?>" required>
+											<input class="w3-input w3-border w3-sand" name="login" type="text" pattern="[a-zA-Z]{2,20}.[a-zA-Z]{2,20}" title="Formato: nome.sobrenome" value="<?php echo $login; ?>" required>
 										</p>
 
 									</td>
