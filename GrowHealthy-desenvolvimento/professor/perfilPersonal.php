@@ -1,12 +1,4 @@
 <html lang="pt">
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Março/2023
----------------------------------------------------------------------------------->
-<!-- perfilProf.php -->
-
 <html>
 	<head>	
 		<meta charset="UTF-8">
@@ -19,7 +11,7 @@
 	<body>
 		
 		<!-- Inclui MENU.PHP  -->
-		<?php require '../geral/menuPerfilProf.php'; ?>
+		<?php require '../geral/menuPerfilPersonal.php'; ?>
 
 		<!-- Conteúdo PRINCIPAL: deslocado para direita em 270 pixels quando a sidebar é visível -->
 		<div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
