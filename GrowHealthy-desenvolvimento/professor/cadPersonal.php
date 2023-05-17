@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Março/2023
----------------------------------------------------------------------------------->
-<!-- cadProf.php -->
-
 <html>
 
 <head>
@@ -21,7 +13,7 @@
 
 <body>
 	<!-- Inclui MENU.PHP  -->
-	<?php require '../geral/menuPerfilProf.php'; ?>
+	<?php require '../geral/menuPerfilPersonal.php'; ?>
 	<?php require '../bd/conectaBD.php'; ?>
 
 	<!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
