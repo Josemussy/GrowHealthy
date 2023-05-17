@@ -1,16 +1,8 @@
 <!DOCTYPE html>
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Março/2023
----------------------------------------------------------------------------------->
-<!-- profExcluir.php -->
-
 <html>
 <head>
 
-    <title>IE - Instituição de Ensino</title>
+    <title>GrowHealthy</title>
     <link rel="icon" type="image/png" href="imagens/IE_favicon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,7 +11,7 @@
 <body>
 
 <!-- Inclui MENU.PHP  -->
-<?php require '../geral/menuPerfilProf.php';?>
+<?php require '../geral/menuPerfilPersonal.php';?>
 <?php require '../bd/conectaBD.php'; ?>
 
 <!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
@@ -81,7 +73,7 @@
 							<label class="w3-text-IE"><b>Login: </b><?php echo $row['Login']; ?></label></p>
 							<p>
 							<input type="submit" value="Confirma exclusão?" class="w3-btn w3-red" >
-							<input type="button" value="Cancelar" class="w3-btn w3-theme" onclick="window.location.href='profListar.php'"></p>
+							<input type="button" value="Cancelar" class="w3-btn w3-theme" onclick="window.location.href='alunoListar.php'"></p>
 						</form>
 			<?php 
 					}else{?>
