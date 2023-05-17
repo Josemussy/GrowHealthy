@@ -1,12 +1,4 @@
 <html lang="pt">
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Março/2023
----------------------------------------------------------------------------------->
-<!-- professor.php -->
-
 <html>
 	<head>	
 		<title>GrowHealthy</title>
