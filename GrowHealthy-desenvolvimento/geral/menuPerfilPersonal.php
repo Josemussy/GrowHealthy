@@ -16,7 +16,7 @@
 		$url = strstr($url, '/',true);
 	}
 	if ($_SESSION['tipo'] == 'Administrador'){
-		$url = "Location: /" . $url . "/professor.php";	// Monta URL para redirecionamento
+		$url = "Location: /" . $url . "/personal.php";	// Monta URL para redirecionamento
 		header($url);                               	 
 		exit();
 	}else if($_SESSION['tipo'] != 'personal' && $_SESSION['tipo'] != 'Administrador'){
@@ -49,7 +49,7 @@
 	<!-- profSidebar -->
 	<div class="w3-sidebar w3-bar-block w3-collapse w3-animate-left" style="z-index:3;width:270px" id="mySidebar" >
 		<div class="w3-bar w3-hide-large w3-large">
-			<a href="cadProf.php"  
+			<a href="cadPersonal.php"  
 			class="w3-bar-item w3-button w3-theme w3-hover-light-gray w3-padding-16" style="width:50%" >Dados Pessoais</a>
 			<a href="alunoListar.php"   
 			class="w3-bar-item w3-button w3-theme w3-hover-light-gray w3-padding-16" style="width:50%">Meus alunos</a>		   
