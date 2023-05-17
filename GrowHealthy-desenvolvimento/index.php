@@ -1,13 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt">
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Março/2023
----------------------------------------------------------------------------------->
-<!-- Index.php --> 
-
 <html>
 	<head>	
         <meta charset="UTF-8">
@@ -23,11 +15,11 @@
             session_start();
             if (isset($_SESSION['tipo'])) {                                  // Se existe usuário logado, verifica o tipo
                 if ($_SESSION['tipo'] == 'Administrador'){
-                    $url = 'location: /GrowHealthy-desenvolvimento/professor.php';	             
+                    $url = 'location: /GrowHealthy-desenvolvimento/personal.php';	             
                     header($url);                                         	  // Vai para a página inicial de Administrador
                     exit();
-                }else if ($_SESSION['tipo'] == 'Professor'){
-                    $url = 'location: /GrowHealthy-desenvolvimento/professor/perfilProf.php';	 
+                }else if ($_SESSION['tipo'] == 'Personal'){
+                    $url = 'location: /GrowHealthy-desenvolvimento/personal/perfilPersonal.php';	 
                     header($url);                                         	  // Vai para a página inicial de Professor
                     exit();
                 }
