@@ -51,12 +51,12 @@
 
     // Não recebe uma imagem binária e faz Insert na Base de Dados
     if ($tipo == 'aluno') {
-    $sql = "INSERT INTO Aluno (CPF_Aluno, login, celular, nome, Genero, email,Peso,Altura,senha,tipo)
-     VALUES ('$cpf','$login','$celular', '$nome', '$genero','$email','$peso','$altura','$senha','$tipo')";
+    $sql = "INSERT INTO Aluno (cpf, login, celular, nome, Genero, email,Peso,Altura,senha)
+     VALUES ('$cpf','$login','$celular', '$nome', '$genero','$email','$peso','$altura','$senha')";
     }
     else {
-    $sql = "INSERT INTO Personal (Nome, Genero, Email, CREF, login, dt_nasc, cpf, tipo, celular, senha)
-    VALUES ('$nome','$genero','$email', '$cref', '$login','$dt_nasc','$cpf','$tipo','$celular','$senha')";        
+    $sql = "INSERT INTO Personal (Nome, Genero, Email, CREF, login, dt_nasc, cpf, celular, senha)
+    VALUES ('$nome','$genero','$email', '$cref', '$login','$dt_nasc','$cpf','$celular','$senha')";        
     }
 
 

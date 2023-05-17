@@ -30,34 +30,37 @@
 
     // Faz Select na Base de Dados
     
-    $sql = "SELECT CREF, login ,senha,tipo  FROM Personal WHERE login = '$usuario' AND senha = md5('$senha')";
+    $sql = "SELECT CREF, login ,senha FROM Personal WHERE login = '$usuario' AND senha = '$senha'";
 
     if ($result = $conn->query($sql)) {
         if ($result->num_rows == 1) {         // Deu match: login e senha combinaram
             $row = $result->fetch_assoc();
             $_SESSION ['login']       = $usuario;
-            $_SESSION ['tipo'] = $row['tipo'];
-            $_SESSION ['CREF']  = $row['CREF'];
+            $_SESSION ['CREF']        = $row['CREF'];
             $_SESSION ['nome']        = $row['nome'];
           unset($_SESSION['nao_autenticado']);                         // Agora está logado
            // if( $_SESSION ['tipo'] == 'personal'){           
                 $conn->close();  //Encerra conexao com o BD
-                header('location: /GrowHealthy-desenvolvimento/professor.php');  // Perfil Aluno
+                header('location: professor/perfilProf.php');  // Perfil Aluno
                 exit();
             //}else {  
             //    $conn->close();  //Encerra conexao com o BD                               
             //    header('location: /GrowHealthy-desenvolvimento/professor/perfilProf.php');  // Perfil Personal
             //    exit();
             //}
-        }else{
+        }
+        elseif ($result->num_rows == 0){
+            echo ("Não tá dando select");
+        }
+        else{
             $_SESSION['nao_autenticado'] = true;
             $_SESSION['mensagem_header'] = "Login";
-            $_SESSION['mensagem']        = "Senha ou usuário incorreto." ;
+            $_SESSION['mensagem']        = "Senha ou usuário incorreto.". $senha ;
             $conn->close();  //Encerra conexao com o BD
             header('location: index.php'); 
             exit();
         }
-    //}
+    }
     else {
         $msg = "Erro ao acessar o BD: " . $conn-> error . ".";
         $_SESSION['nao_autenticado'] = true;
