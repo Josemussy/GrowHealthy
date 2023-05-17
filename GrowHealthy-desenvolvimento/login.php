@@ -1,11 +1,4 @@
 <html>
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Março/2023
----------------------------------------------------------------------------------->
-<!-- Login.php --> 
 	<head>
       <meta charset="UTF-8">  
 	  <title>GrowHealthy</title>
@@ -17,13 +10,11 @@
 <body>
 
 <?php
-    session_start(); // infomra ao PHP que iremos trabalhar com sessão
+    session_start();
     require 'bd/conectaBD.php'; 
-    
-    // Cria conexão
     $conn = new mysqli($servername, $username, $password, $database);
 
-    // Verifica conexão 
+   
     if ($conn->connect_error) {
         die("<strong> Falha de conexão: </strong>" . $conn->connect_error);
     }
@@ -36,20 +27,20 @@
     $sql = "SELECT CRE,nome, t.nomeTipo FROM TB_Usuario as U, TB_TipoUsuario as T WHERE u.ID_TipoUsu = t.ID_TipoUsu AND login = '$usuario' AND senha = md5('$senha')";
 
     if ($result = $conn->query($sql)) {
-        if ($result->num_rows == 1) {         // Deu match: login e senha combinaram
+        if ($result->num_rows == 1) {         
             $row = $result->fetch_assoc();
             $_SESSION ['login']       = $usuario;
             $_SESSION ['nomeTipoUsu'] = $row['nomeTipo'];
             $_SESSION ['CREF']  = $row['CREF'];
             $_SESSION ['nome']        = $row['nome'];
-            unset($_SESSION['nao_autenticado']);                         // Agora está logado
+            unset($_SESSION['nao_autenticado']);                         
             if( $_SESSION ['nomeTipoUsu'] == 'Administrador'){           
                 $conn->close();  //Encerra conexao com o BD
-                header('location: /GrowHealthy-desenvolvimento/professor.php');  // Perfil Administrador
+                header('location: /GrowHealthy-desenvolvimento/personal.php');  
                 exit();
             }else {  
                 $conn->close();  //Encerra conexao com o BD                               
-                header('location: /GrowHealthy-desenvolvimento/professor/perfilProf.php');  // Perfil Professor   
+                header('location: /GrowHealthy-desenvolvimento/personal/perfilPersonal.php');  
                 exit();
             }
         }else{
