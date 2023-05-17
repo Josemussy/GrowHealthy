@@ -1,11 +1,3 @@
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Março/2023
----------------------------------------------------------------------------------->
-<!-- menuPerfilProf.php -->
-
 <?php
 	require('../verifica_login.php');
 	
@@ -41,7 +33,7 @@
 		</div>
 		<div class="w3-bar w3-theme w3-large" style="z-index:-1">
 			<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-light-gray w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" href="cadProf.php">Dados Pessoais</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" href="cadPersonal.php">Dados Pessoais</a>
 			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" href="alunoListar.php">Meus alunos</a>
 		</div>
 	</div>
