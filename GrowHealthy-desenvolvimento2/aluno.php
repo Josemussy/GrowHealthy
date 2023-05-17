@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt">
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Março/2023
----------------------------------------------------------------------------------->
-<!-- Index.php --> 
 
 <html>
 	<head>	
@@ -20,18 +13,18 @@
 	</head>
 	<body >  
         <?php
-        //   session_start();
-         //  if (isset($_SESSION['nomeTipoUsu'])) {                                  // Se existe usuário logado, verifica o tipo
-          //      if ($_SESSION['nomeTipoUsu'] == 'Administrador'){
-          //          $url = 'location: /SiteSample2023/professor.php';	             
-          //          header($url);                                         	  // Vai para a página inicial de Administrador
-          //          exit();
-          //      }else if ($_SESSION['nomeTipoUsu'] == 'Professor'){
-          //          $url = 'location: /SiteSample2023/professor/perfilProf.php';	 
-          //          header($url);                                         	  // Vai para a página inicial de Professor
-          //          exit();
-          //      }
-           // }
+            session_start();
+            if (isset($_SESSION['nomeTipoUsu'])) {                                  // Se existe usuário logado, verifica o tipo
+                if ($_SESSION['nomeTipoUsu'] == 'Administrador'){
+                    $url = 'location: /SiteSample2023/professor.php';	             
+                    header($url);                                         	  // Vai para a página inicial de Administrador
+                    exit();
+                }else if ($_SESSION['nomeTipoUsu'] == 'Professor'){
+                    $url = 'location: /SiteSample2023/professor/perfilProf.php';	 
+                    header($url);                                         	  // Vai para a página inicial de Professor
+                    exit();
+                }
+            }
         ?>
         <!-- Não encontrou usuário logado, então mostra página inicial -->
         <!-- Menu Superior -->
