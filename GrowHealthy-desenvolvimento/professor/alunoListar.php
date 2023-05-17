@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Março/2023
----------------------------------------------------------------------------------->
-<!-- profListar.php -->
-
 <html>
 <head>
     <title>GrowHealthy</title>
@@ -17,7 +9,7 @@
 </head>
 <body>
 <!-- Inclui MENU.PHP  -->
-<?php require '../geral/menuPerfilProf.php'; ?>
+<?php require '../geral/menuPerfilPersonal.php'; ?>
 <?php require '../bd/conectaBD.php'; ?>
 
 <!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
