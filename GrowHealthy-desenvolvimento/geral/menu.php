@@ -1,11 +1,3 @@
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Março/2023
----------------------------------------------------------------------------------->
-<!-- menu.php -->
-
 	<?php
 		require('verifica_login.php');
 		$url = dirname($_SERVER['SCRIPT_NAME']);                   // Obtém URL básica da aplicação Web
@@ -15,7 +7,7 @@
 			$url = strstr($url, '/',true);
 		}
 		if ($_SESSION['tipo'] == 'personal'){
-			$url = "Location: /" . $url . "/professor/perfilProf.php";	// Monta página para reurlecionamento
+			$url = "Location: /" . $url . "/personal/perfilPersonal.php";	// Monta página para reurlecionamento
 			header($url);                                         		// Vai para a página de login / inicial
 			exit();
 		}else if ($_SESSION['tipo'] != 'Administrador'){     	// Não é Professor nem Administrador
@@ -40,7 +32,7 @@
 		</div>
 		<div class="w3-bar w3-theme w3-large" style="z-index:-1">
 			<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-light-gray w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" href="professor.php" onclick="w3_show_nav('menuProf')">Personais</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" href="personal.php" onclick="w3_show_nav('menuProf')">Personais</a>
 		</div>
 	</div>
 
