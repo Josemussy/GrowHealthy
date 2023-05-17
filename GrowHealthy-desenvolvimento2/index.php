@@ -113,10 +113,10 @@
                         </div>
                         <h2 class="w3-center w3-xxlarge">Login</h2>
                         <form action="login.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-IE w3-margin">
-                            <div class="w3-section">
-                            <label class="w3-text-IE"><b>Login do usuário</b></label>
+                            
+                            <label class="w3-text-IE"><b>Login do usuário</b>*</label>
                             <input class="w3-input w3-border w3-margin-bottom" type="text" name="Login" placeholder="nome.sobrenome">
-                            <label class="w3-text-IE"><b>Senha</b></label>
+                            <label class="w3-text-IE"><b>Senha</b>*</label>
                             <input class="w3-input w3-border" name="SenhaL" id="SenhaL" type="password"  
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}" placeholder="sua senha" 
                             title="Deve conter ao menos um número, uma letra maiúscula, uma letra minúscula, um caracter especial, e ter de 6 a 8 caracteres" 
@@ -124,6 +124,20 @@
                             <p>
                             <input type="checkbox" id="chkL" class="w3-btn w3-theme"  onclick="mostrarOcultarSenha(2)"> <b>Mostrar senha</b>
                             </p>
+                            <div class="w3-section">
+                            <label class="w3-text-IE"><b>Você é: </b>*</label> <br>
+                            <span class="w3-text-IE">
+                            <label>Aluno </label>
+                            <input type="radio" id="aluno" name="tipo" value="aluno" required>
+                            <label>Nutricionista </label>
+                            <input type="radio" id="nutricionista" name="tipo" value="nutricionista" required>
+                            <label>Personal </label>
+                            <input type="radio" id="personal" name="tipo" value="personal" required>
+                            
+
+                                
+                            
+
                             <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
                             </div>
                         </form>

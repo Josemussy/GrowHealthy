@@ -54,11 +54,14 @@
     $sql = "INSERT INTO Aluno (cpf, login, celular, nome, Genero, email,Peso,Altura,senha)
      VALUES ('$cpf','$login','$celular', '$nome', '$genero','$email','$peso','$altura','$senha')";
     }
-    else {
+    elseif($tipo == 'personal') {
     $sql = "INSERT INTO Personal (Nome, Genero, Email, CREF, login, dt_nasc, cpf, celular, senha)
     VALUES ('$nome','$genero','$email', '$cref', '$login','$dt_nasc','$cpf','$celular','$senha')";        
     }
-
+    elseif($tipo == 'nutricionista') {
+        $sql = "INSERT INTO Nutricionista (Nome, Genero, Email, CRN, login, dt_nasc, cpf, celular, senha)
+        VALUES ('$nome','$genero','$email', '$cref', '$login','$dt_nasc','$cpf','$celular','$senha')";        
+        }
 
     if ($result = $conn->query($sql)) {
         $msg = "Registro cadastrado com sucesso! Você já pode realizar login.";

@@ -24,14 +24,22 @@
 
     $usuario = $conn->real_escape_string($_POST['Login']); // prepara a string recebida para ser utilizada em comando SQL
     $senha   = $conn->real_escape_string($_POST['SenhaL']); // prepara a string recebida para ser utilizada em comando SQL
-
+    $tipo    =$conn->real_escape_string($_POST['tipo']);
     
     
 
     // Faz Select na Base de Dados
-    
-    $sql = "SELECT CREF, login ,senha FROM Personal WHERE login = '$usuario' AND senha = '$senha'";
+    if($tipo == 'aluno'){
+        $sql = "SELECT cpf, login ,senha FROM aluno WHERE login = '$usuario' AND senha = '$senha'";
 
+    }
+    elseif($tipo == 'personal'){
+        $sql = "SELECT CREF, login ,senha FROM Personal WHERE login = '$usuario' AND senha = '$senha'";
+    }
+    elseif($tipo =='nutricionista'){
+        $sql = "SELECT crn, login ,senha FROM nutricionista WHERE login = '$usuario' AND senha = '$senha'";
+    }
+    
     if ($result = $conn->query($sql)) {
         if ($result->num_rows == 1) {         // Deu match: login e senha combinaram
             $row = $result->fetch_assoc();
