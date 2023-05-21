@@ -1,5 +1,3 @@
-
-
 <?php
 	require('../verifica_login.php');
 	
@@ -9,11 +7,11 @@
 		$url = substr($url,strrpos($url,"\\/"),strlen($url));  // Retira 2o. '/', se ainda houver esse caracter
 		$url = strstr($url, '/',true);
 	}
-	if ($_SESSION['nomeTipoUsu'] == 'Administrador'){
-		$url = "Location: /" . $url . "/professor.php";	// Monta URL para redirecionamento
+	if ($_SESSION['tipo'] == 'Administrador'){
+		$url = "Location: /" . $url . "/personal.php";	// Monta URL para redirecionamento
 		header($url);                               	 
 		exit();
-	}else if($_SESSION['nomeTipoUsu'] != 'Professor' && $_SESSION['nomeTipoUsu'] != 'Administrador'){
+	}else if($_SESSION['tipo'] != 'personal' && $_SESSION['tipo'] != 'Administrador'){
 		$url = "Location: /" . $url . "/logout.php";	// Monta URL para redirecionamento
 		header($url);									 
 		exit();
@@ -28,25 +26,25 @@
 		</div>
 		<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small">
 			<div class="w3-right"><?php 
-				echo $_SESSION['nomeTipoUsu'] . "(a):&nbsp;";
+				echo $_SESSION['tipo'] . "(a):&nbsp;";
 				echo $_SESSION['nome']; 
 				?>&nbsp;<a href="../logout.php" class="w3-red" style="text-decoration:none; letter-spacing:1px">&nbsp;Sair&nbsp;</a>
 			</div >
 		</div>
-		<div class="w3-bar w3-cyan w3-large" style="z-index:-1">
-			<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-light-gray w3-large w3-cyan w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" href="cadProf.php">Dados Pessoais</a>
-			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" href="turmasProfListar.php">Turmas</a>
+		<div class="w3-bar w3-theme w3-large" style="z-index:-1">
+			<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-light-gray w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" href="cadPersonal.php">Dados Pessoais</a>
+			<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" href="alunoListar.php">Meus alunos</a>
 		</div>
 	</div>
 
 	<!-- profSidebar -->
 	<div class="w3-sidebar w3-bar-block w3-collapse w3-animate-left" style="z-index:3;width:270px" id="mySidebar" >
 		<div class="w3-bar w3-hide-large w3-large">
-			<a href="cadProf.php"  
-			class="w3-bar-item w3-button w3-cyan w3-hover-light-gray w3-padding-16" style="width:50%">Dados Pessoais</a>
-			<a href="turmasProfListar.php"  
-			class="w3-bar-item w3-button w3-cyan w3-hover-light-gray w3-padding-16" style="width:50%">Turmas</a>		   
+			<a href="cadPersonal.php"  
+			class="w3-bar-item w3-button w3-theme w3-hover-light-gray w3-padding-16" style="width:50%" >Dados Pessoais</a>
+			<a href="alunoListar.php"   
+			class="w3-bar-item w3-button w3-theme w3-hover-light-gray w3-padding-16" style="width:50%">Meus alunos</a>		   
 		</div>
 		<a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-right w3-xlarge w3-hide-large"
 		title="Close Menu">x</a>
