@@ -1,7 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt">
-
-
+<?php require 'bd/conectaBD.php'; ?>
+<?php
+	require('verifica_login.php');
+    
+	
+	$url = dirname($_SERVER['SCRIPT_NAME']);                   // Obtém URL básica da aplicação Web
+	$url = substr($url,strrpos($url,"\\/")+1,strlen($url));    // Retira 1o. '/'
+	if (substr_count($url, '/') >= 1){                          
+		$url = substr($url,strrpos($url,"\\/"),strlen($url));  // Retira 2o. '/', se ainda houver esse caracter
+		$url = strstr($url, '/',true);
+	}
+	if ($_SESSION['tipo'] == 'personal'){
+		$url = "Location: /" . $url . "/personal.php";	// Monta URL para redirecionamento
+		header($url);                               	 
+		exit();
+	}
+?>
 <html>
 	<head>	
         <meta charset="UTF-8">
@@ -13,21 +26,7 @@
         <script type="text/javascript" src="js/myScript.js"></script>
 	</head>
 	<body >  
-        <?php
-        //   session_start();
-         //  if (isset($_SESSION['nomeTipoUsu'])) {                                  // Se existe usuário logado, verifica o tipo
-          //      if ($_SESSION['nomeTipoUsu'] == 'Administrador'){
-          //          $url = 'location: /SiteSample2023/professor.php';	             
-          //          header($url);                                         	  // Vai para a página inicial de Administrador
-          //          exit();
-          //      }else if ($_SESSION['nomeTipoUsu'] == 'Professor'){
-          //          $url = 'location: /SiteSample2023/professor/perfilProf.php';	 
-          //          header($url);                                         	  // Vai para a página inicial de Professor
-          //          exit();
-          //      }
-           // }
-        ?>
-
+        
         <div class="w3-top" id="LoginCadastro" >
             <div class="w3-row w3-white w3-padding" >
                 <div class="w3-half" style="margin:0 0 0 0"><a href="."><img src='imagens/logo1.png' alt=' IE Exemplo ' width="50" height="40"></a></div>
@@ -77,6 +76,35 @@
                 <!-- Login Fail Modal --> 
                 <!-- -->
                 <?php
+                
+                $idAluno = $_SESSION['id'];
+                
+				
+
+				// Cria conexão
+				$conn = new mysqli($servername, $username, $password, $database);
+
+				// Verifica conexão 
+				if ($conn->connect_error) {
+					die("<strong> Falha de conexão: </strong>" . $conn->connect_error);
+				}
+
+				// Faz Select na Base de Dados
+				$sql = "SELECT id, email, altura, peso, restricoesFisicas, restricoesAlimentares, senha FROM aluno WHERE id = '$idAluno'";
+                //Inicio DIV form
+				echo "<div class='w3-responsive w3-card-4'>";
+				if ($result = $conn->query($sql)) {
+					if ($result->num_rows == 1) {
+						$row        = $result->fetch_assoc(); 
+						$email      = $row['email'];
+						$altura     = $row['altura'];
+						$peso       = $row['peso'];
+						$restricoesFisicas     = $row['restricoesFisicas'];
+						$restricoesAlimentares = $row['restricoesAlimentares'];
+                        $senha      = $row['senha'];
+                    }
+                }
+
                 $msg        = "";
                 $msg_header = "";
                 if(isset($_SESSION['nao_autenticado'])){ 
@@ -105,7 +133,7 @@
                         <br>
                     </div>
                 </div>  
-            
+                    
                 <!-- MODAL LOGIN: pop up para realizar Login --> 
                 <div id="id0L" class="w3-modal ">
                     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
@@ -116,16 +144,16 @@
                         <form action="editar.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-cyan w3-margin">
                             <div class="w3-section">
                             <label class="w3-text-cyan"><b>Email</b></label>
-                            <input class="w3-input w3-border" disabled="disabled" id="email" name="Email" type="text" placeholder="exemplo@gmail.com"
+                            <input class="w3-input w3-border" disabled="disabled" id="email" name="Email" type="text" placeholder="exemplo@gmail.com" value= "<?php echo $email; ?>"
                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> 
                             <label class="w3-text-cyan"><b>Altura</b></label>
-                            <input class="w3-input w3-border" placeholder="XX,XX" maxlength="3" max="220" onkeypress="return event.charCode >= 48 && event.charCode <= 57" disabled="disabled" id="altura" name="Altura" type="text" placeholder=""> 
+                            <input class="w3-input w3-border" placeholder="XX,XX" maxlength="3" max="220" onkeypress="return event.charCode >= 48 && event.charCode <= 57" disabled="disabled" id="altura" name="Altura" type="text" placeholder="" value= "<?php echo $altura; ?>"> 
                             <label class="w3-text-cyan"><b>Peso</b></label>
-                            <input class="w3-input w3-border" placeholder="XX,XX" oninput="this.value=this.value.replace(/^(\d{1,2})(\d{1,2})?$|^(\d{1,2})(\d{2})$/, function(match, p1, p2, p3, p4) { return p1 ? p1 + (p2 ? ',' + p2 : '') : p3 + ',' + p4; })" maxlength="5"  onkeypress="return event.charCode >= 48 && event.charCode <= 57"  disabled="disabled" id="peso" name="Peso" type="text" placeholder=""> 
+                            <input class="w3-input w3-border" placeholder="XX,XX" oninput="this.value=this.value.replace(/^(\d{1,2})(\d{1,2})?$|^(\d{1,2})(\d{2})$/, function(match, p1, p2, p3, p4) { return p1 ? p1 + (p2 ? ',' + p2 : '') : p3 + ',' + p4; })" maxlength="5"  onkeypress="return event.charCode >= 48 && event.charCode <= 57"  disabled="disabled" id="peso" name="Peso" type="text" value= "<?php echo $peso; ?>"> 
                             <label class="w3-text-cyan"><b>Restrição Fisica</b></label>
-                            <textarea class="w3-input w3-border" disabled="disabled" id="fisica" name="Restrição Fisica" style="max-width: 320px; min-width: 320px;" type="text" placeholder=""></textarea>
+                            <textarea class="w3-input w3-border" disabled="disabled" id="fisica" name="restricaoFisica" style="max-width: 320px; min-width: 320px;" type="text" placeholder="" value= "<?php echo $restricoesFisicas; ?>"></textarea>
                             <label class="w3-text-cyan"><b>Restrição Alimentar</b></label>
-                            <textarea class="w3-input w3-border" disabled="disabled" id="aimentar" name="Restrição Alimentar" style="max-width: 320px; min-width: 320px;" type="text" placeholder=""></textarea> 
+                            <textarea class="w3-input w3-border" disabled="disabled" id="aimentar" name="restricaoAlimentar" style="max-width: 320px; min-width: 320px;" type="text" placeholder="" value= "<?php echo $restricoesAlimentares; ?>"></textarea> 
                             <label class="w3-text-cyan"><b>Senha Nova</b></label>
                             <input class="w3-input w3-border" disabled="disabled" name="SenhaL" id="SenhaL" type="password"  
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}" placeholder="sua senha" 
@@ -189,89 +217,9 @@
 
                     </div>
                 </div>
-                <!-- MODAL CADASTRO: pop up para realizar Cadastro - -->  
-                <div id="id0C" class="w3-modal">
-                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
-                        <div class="w3-center"> 
-                            <span onclick="document.getElementById('id0C').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
-                        </div>
-                        <h2 class="w3-center w3-xxlarge">Cadastrar</h2>
-                        <form action="cadastro.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-margin">
-                            <div class="w3-row w3-section">
-                                <div class="w3-rest">
-                                <label class="w3-text-cyan"><b>Nome de usuário</b>*</label>
-                                <input class="w3-input w3-border" name="nome" type="text" placeholder="Nome Sobrenome" required>
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-rest">
-                                <label class="w3-text-cyan"><b>Login</b>*</label>                        
-                                <input class="w3-input w3-border" name="Login" type="text"
-                                    pattern="[a-zA-Z]{2,20}\.[a-zA-Z]{2,20}" placeholder="nome.sobrenome" title="nome.sobrenome" required>
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-rest">
-                                <label class="w3-text-cyan"><b>Celular</b>*</label> 
-                                <input class="w3-input w3-border " name="Celular" id="Celular"  type="text" maxlength="15"
-                                    placeholder="(XX)XXXXX-XXXX" title="(XX)XXXXX-XXXX"  pattern="^\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$" required
-                                    onkeypress="mask(this, mphone);" onblur="mask(this, mphone);"> 
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-rest">
-                                <label class="w3-text-cyan"><b>Email</b>*</label> 
-                                <input class="w3-input w3-border" name="Email" type="text" placeholder="exemplo@gmail.com"
-                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> 
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-rest">
-                                <label class="w3-text-cyan"><b>Nascimento</b>*</label> 
-                                <input class="w3-input w3-border" type="date" name="dt_nasc" id="dt_nasc" min="1930-01-01" 
-                                       max="<?= date('Y-m-d'); ?>" required>
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-rest ">
-                                <label class="w3-text-cyan"><b>Gênero</b>*</label> <br>
-                                <span class="w3-text-cyan">Feminino <input type="radio" id="Feminino" name="genero" value="2">  
-                                Masculino <input type="radio" id="Masculino" name="genero" value="1"> </span> 
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-rest">
-                                <label class="w3-text-cyan"><b>Senha</b>*</label> 
-                                <input class="w3-input w3-border " name="Senha" id="Senha" type="password" onchange="confirmaSenha()"
-                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}"
-                                    title="Deve conter ao menos um número, uma letra maiúscula, uma letra minúscula, um caracter especial, e ter de 6 a 8 caracteres" 
-                                    required> 
-                                </div>
-                            </div>
-                            <div class="w3-row w3-section">
-                                <div class="w3-rest">
-                                <label class="w3-text-cyan"><b>Confirma Senha</b>*</label> 
-                                <input class="w3-input w3-border" name="Senha2" id="Senha2"type="password" onkeyup="confirmaSenha()"
-                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}"
-                                    title="Deve conter ao menos um número, uma letra maiúscula, uma letra minúscula, um caracter especial, e ter de 6 a 8 caracteres" 
-                                    required> 
-                                </div>
-                            </div>
-                            <p>
-                                <input type="checkbox" id="chkC" class="w3-btn w3-cyan"  onclick="mostrarOcultarSenha(2)"> <b>Mostrar senha</b>
-                            </p>
-                            <p class="w3-center">
-                            <button class="w3-button w3-block w3-cyan w3-section w3-padding" type="submit"> Enviar </button>
-                            </p>
-                        </form>
+                
 
-                        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                            <button onclick="document.getElementById('id0C').style.display='none'" type="button" class="w3-button w3-red">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <?php require 'geral/nutricionista.php'; require 'geral/personal.php';?>
+                <?php require 'geral/nutricionista.php'; require 'geral/personalSolicitar.php';?>
                 <!-- FIM PRINCIPAL -->
                 </div>
                 <!-- Inclui RODAPE.PHP  -->

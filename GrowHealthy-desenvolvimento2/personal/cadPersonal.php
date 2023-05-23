@@ -34,7 +34,7 @@
 
 				<!-- Acesso ao BD-->
 				<?php
-				$cref = $_SESSION['CREF'];
+				$id = $_SESSION['id'];
 
 				// Cria conexão
 				$conn = new mysqli($servername, $username, $password, $database);
@@ -46,32 +46,20 @@
 
 
 				// Faz Select na Base de Dados
-				$sql = "SELECT CREF, Nome, Celular, dt_nasc, login FROM Personal";
+				$sql = "SELECT nome, celular, genero, dt_nasc, login, id FROM Personal WHERE id = '$id'";
 
 				//Inicio DIV form
 				echo "<div class='w3-responsive w3-card-4'>";
 				if ($result = $conn->query($sql)) {
 					if ($result->num_rows == 1) {
 						$row = $result->fetch_assoc();
-						$genero     = $row['Genero'];
-						$nome       = $row['Nome'];
-						$celular    = $row['Celular'];
-						$dataNasc   = $row['dt_nasc'];
+						$genero     = $row['genero'];
+						$nome       = $row['nome'];
+						$celular    = $row['celular'];
+						$dt_nasc   = $row['dt_nasc'];
 						$login      = $row['login'];
 
-						// Faz Select na Base de Dados
-						$sqlG = "SELECT CREF, Nome FROM Personal";
-
-						$optionsGenero = array();
-
-						if ($result = $conn->query($sqlG)) {
-							while ($row = $result->fetch_assoc()) {
-								$selected = "";
-								if ($row['Aluno'] == $genero)
-									$selected = "selected";
-								array_push($optionsGenero, "\t\t\t<option " . $selected . " value='" . $row["Personal"] . "'>" . $row["Nome"] . "</option>\n");
-							}
-						}
+						
 
 				?>
 						<div class="w3-container w3-theme">
@@ -93,11 +81,11 @@
 										</p>
 										<p>
 											<label class="w3-text-IE"><b>Data de Nascimento</b></label>
-											<input class="w3-input w3-border w3-sand" name="dt_nasc" type="date" pattern="((0[1-9])|([1-2][0-9])|(3[0-1]))\/((0[1-9])|(1[0-2]))\/((19|20)[0-9][0-9])" placeholder="dd/mm/aaaa" title="dd/mm/aaaa" title="Formato: dd/mm/aaaa" value="<?php echo $dataNasc; ?>">
+											<input class="w3-input w3-border w3-sand" name="dt_nasc" type="date" pattern="((0[1-9])|([1-2][0-9])|(3[0-1]))\/((0[1-9])|(1[0-2]))\/((19|20)[0-9][0-9])" placeholder="dd/mm/aaaa" title="dd/mm/aaaa" title="Formato: dd/mm/aaaa" value="<?php echo $dt_nasc; ?>">
 										</p>
 
 										<p><label class="w3-text-IE"><b>Gênero</b>*</label>
-											<select name="Genero" id="Genero" class="w3-input w3-border w3-sand" required>
+											<select name="Genero" id="Genero" class="w3-input w3-border w3-sand" value = "<?php echo $genero; ?>" required >
 
 												<?php
 												foreach ($optionsGenero as $key => $value) {
@@ -126,25 +114,7 @@
 										<p>
 											<input type="checkbox" id="chkC" class="w3-btn w3-theme" onclick="mostrarOcultarSenha(1)"> Mostrar senha
 										</p>
-										<p style="text-align:center"><label class="w3-text-IE"><b>Minha Imagem para Identificação: </b></label></p>
-										<?php
-										if ($foto) { ?>
-											<p style="text-align:center">
-												<img id="imagemSelecionada" class="w3-circle w3-margin-top" src="data:image/png;base64,<?= base64_encode($foto); ?>" />
-											</p>
-										<?php
-										} else {
-										?>
-											<p style="text-align:center">
-												<img id="imagemSelecionada" class="w3-circle w3-margin-top" src="imagens/pessoa.jpg" />
-											</p>
-										<?php
-										}
-										?>
-										<p style="text-align:center"><label class="w3-btn w3-theme">Selecione uma Imagem
-												<input type="hidden" name="MAX_FILE_SIZE" value="16777215" />
-												<input type="file" id="Imagem" name="Imagem" accept="imagem/*" onchange="validaImagem(this);" /></label>
-										</p>
+										
 									</td>
 								</tr>
 								<tr>

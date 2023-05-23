@@ -2,14 +2,14 @@
 <html>
 	<head>	
 		<title>GrowHealthy</title>
-		<link rel="icon" type="image/png" href="imagens/IE_favicon.png"/>
+		<link rel="icon" type="image/png" href="imagens/logo1.png"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="css/customize.css">
 	</head>
 	<body  onload="w3_show_nav('menuProf')">
 
-	<?php require 'geral/menu.php'; ?>
+	
 
 		<!-- Conteúdo PRINCIPAL: deslocado para direita em 270 pixels quando a sidebar é visível -->
 		<div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">

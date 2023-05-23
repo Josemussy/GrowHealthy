@@ -43,20 +43,21 @@
 				}
 
 				// Faz Select na Base de Dados
-				$sql = "SELECT ID_Usuario, Nome, Celular, DataNasc, ID_Genero, Foto, Login FROM TB_Usuario WHERE ID_Usuario = $id";
+				$sql = "SELECT id, nome, genero, dt_nasc, altura, peso, restricoesFisicas, restricoesAlimentares FROM aluno WHERE id = '$id'";
 
 				//Inicio DIV form
 				echo "<div class='w3-responsive w3-card-4'>";
 				if ($result = $conn->query($sql)) {
 					if ($result->num_rows == 1) {
 						$row        = $result->fetch_assoc(); 
-						$genero     = $row['ID_Genero'];
-						$id_usuario = $row['ID_Usuario'];
-						$nome       = $row['Nome'];
-						$celular    = $row['Celular'];
-						$dataNasc   = $row['DataNasc'];
-						$login      = $row['Login'];
-						$foto       = $row['Foto'];
+						$idAluno    = $row['id'];
+						$nome       = $row['nome'];
+						$genero     = $row['genero'];
+						$altura     = $row['altura'];
+						$peso       = $row['peso'];
+						$restricoesFisicas = $row['restricoesFisicas'];
+						$restricoesAlimentares = $row['restricoesAlimentares'];
+
 									
 						// Faz Select na Base de Dados
 						$sqlG = "SELECT ID_Genero, Nome FROM TB_Genero";
@@ -74,7 +75,7 @@
 
 						?>
 						<div class="w3-container w3-theme">
-							<h2>Altere o Treino Cód. = [<?php echo $id_usuario; ?>]</h2>
+							<h2>Altere o Treino Cód. = [<?php echo $idAluno; ?>]</h2>
 						</div>
 						<form class="w3-container" action="ProfAtualizar_exe.php" method="post" enctype="multipart/form-data">
 							<table class='w3-table-all'>
@@ -84,25 +85,25 @@
 											<input type="hidden" id="Id" name="Id" value="<?php echo $id_medico; ?>">
 										<p>
 										<label class="w3-text-IE"><b>Nome</b></label>
-										<input class="w3-input w3-border w3-light-grey " name="Nome" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" title="Nome entre 10 e 100 letras." value="<?php echo $nome; ?>" required>
+										<input class="w3-input w3-border w3-light-grey " name="Nome" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" title="Nome entre 10 e 100 letras." value="<?php echo $nome; ?>" readonly>
 										</p>
 										<p>
 										<label class="w3-text-IE"><b>Data de Nascimento</b>*</label>
-										<input class="w3-input w3-border w3-light-grey " name="Idade" id="idade" type="text" maxlength="15" placeholder="Anos" title="idade" value="<?php echo $dataNasc; ?>" >
+										<input class="w3-input w3-border w3-light-grey " name="Idade" id="idade" type="text" maxlength="15" placeholder="Anos" title="idade" value="<?php echo $dataNasc; ?>" readonly >
 										</p>
 										<p>
 										<label class="w3-text-IE"><b>Altura</b></label>
-										<input class="w3-input w3-border w3-light-grey " name="altura" type="text" placeholder="1,80m" title="altura">
+										<input class="w3-input w3-border w3-light-grey " name="altura" type="text" placeholder="1,80m" title="altura" value="<?php echo $altura; ?>" readonly>
 										</p>
 										<p>
 										<label class="w3-text-IE"><b>Peso</b></label>
-										<input class="w3-input w3-border w3-light-grey " name="Dpeso" type="text" placeholder="Kg" title="Peso">
+										<input class="w3-input w3-border w3-light-grey " name="Dpeso" type="text" placeholder="Kg" title="Peso" value="<?php echo $peso; ?>" readonly>
 										</p>
 										<label class="w3-text-IE"><b>Restrições Alimentares</b></label>
-										<input class="w3-input w3-border w3-light-grey " name="RestAlimentar" type="text" placeholder="Nenhuma" title="RestAlimentar">
+										<input class="w3-input w3-border w3-light-grey " name="RestAlimentar" type="text" placeholder="Nenhuma" title="RestAlimentar" value="<?php echo $restricoesAlimentares; ?>" readonly>
 										</p>
 										<label class="w3-text-IE"><b>Restrições Físicas</b></label>
-										<input class="w3-input w3-border w3-light-grey " name="RestFisicas" type="text" placeholder="Nenhuma" title="RestFisicas">
+										<input class="w3-input w3-border w3-light-grey " name="RestFisicas" type="text" placeholder="Nenhuma" title="RestFisicas" value="<?php echo $restricoesFisicas; ?>" readonly>
 										</p>
 										
 

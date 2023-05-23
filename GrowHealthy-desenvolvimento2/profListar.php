@@ -47,17 +47,14 @@
 
 
                 // Faz Select na Base de Dados
-                $sql = "SELECT CREF, Nome, celular, Email , login, dt_nasc FROM Personal";
+                $sql = "SELECT id, Nome, celular, Email FROM aluno WHERE personal_id = $_SESSION ['id']";
                 echo "<div class='w3-responsive w3-card-4'>";
                 if ($result = $conn->query($sql)) {
                     echo "<table class='w3-table-all'>";
                     echo "	<tr>";
-                    echo "	  <th>CREF</th>";
                     echo "	  <th>Nome</th>";
                     echo "	  <th>Celular</th>";
-                    echo "	  <th>Email</th>";
-                    echo "	  <th>Login</th>";
-                    echo "	  <th>Data Nascimento</th>";                  
+                    echo "	  <th>Email</th>";                
                     echo "	  <th> </th>";
                     echo "	  <th> </th>";
                     echo "	</tr>";

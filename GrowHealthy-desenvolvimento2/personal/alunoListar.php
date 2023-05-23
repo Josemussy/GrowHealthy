@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>GrowHealthy</title>
-    <link rel="icon" type="image/png" href="imagens/IE_favicon.png"/>
+    <link rel="icon" type="image/png" href="imagens/logo1.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="../css/customize.css">
@@ -35,7 +35,8 @@
 
             <!-- Acesso ao BD-->
             <?php
-
+                $idPersonal = $_SESSION['id'];
+                
                 // Cria conexão
 				$conn = new mysqli($servername, $username, $password, $database);
 
@@ -46,46 +47,37 @@
 
 
                 // Faz Select na Base de Dados
-                $sql = "SELECT CPF_Aluno, Nome, Celular, dt_nasc, login FROM Aluno";
+                $sql = "SELECT id, nome, celular, email, dt_nasc FROM aluno WHERE personal_id = '$idPersonal'";
                 echo "<div class='w3-responsive w3-card-4'>";
                 if ($result = $conn->query($sql)) {
                     echo "<table class='w3-table-all'>";
                     echo "	<tr>";
-                    echo "	  <th>CPF_Aluno</th>";
                     echo "	  <th>Nome</th>";
                     echo "	  <th>Celular</th>";
-                    echo "	  <th>Data Nascimento</th>";
-                    echo "	  <th>Login</th>";
+                    echo "	  <th>Email</th>";       
+                    echo "	  <th>Data Nascimento</th>";         
                     echo "	  <th> </th>";
                     echo "	  <th> </th>";
                     echo "	</tr>";
                     if ($result->num_rows > 0) {
                         // Apresenta cada linha da tabela
                         while ($row = $result->fetch_assoc() ) {
-                            $dataN = explode('-', $row["dt_nasc"]);
-                            $ano = $dataN[0];
-                            $mes = $dataN[1];
-                            $dia = $dataN[2];
-                            $cod = $row["CPF_Aluno"];
-                            $nova_data = $dia . '/' . $mes . '/' . $ano;
+                            
                             echo "<tr>";
-                            echo "<td>";
-                            echo $cod;
-                            echo "</td>";
-                            echo $row["Nome"];
                             echo "</td><td>";
-                            echo $row["Celular"];
+                            echo $row["nome"];
                             echo "</td><td>";
-                            echo $nova_data;
+                            echo $row["celular"];
                             echo "</td><td>";
-                            echo $row["Login"];
+                            echo $row['email'];
+                            echo "</td><td>";
+                            echo $row["dt_nasc"];
                             echo "</td><td>";
                             //Atualizar e Excluir registro de personal
             ?>                      
-                            <a href='treinoAtualizar.php?id=<?php echo $cod; ?>'><img src='../imagens/Edit.png' title='Postar Treino' width='32'></a>
+                            <a href='treinoAtualizar.php?id=<?php echo $row['id']; ?>'><img src='../imagens/Edit.png' title='Postar Treino' width='32'></a>
                             </td><td>
-                            <a href='treinoExcluir.php?id=<?php echo $cod; ?>'><img src='../imagens/Delete.png' title='Excluir Aluno' width='32'></a>
-                            </td>
+                            
                             </tr>
             <?php
                         }

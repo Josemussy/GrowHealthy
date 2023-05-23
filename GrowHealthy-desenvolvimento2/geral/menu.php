@@ -6,12 +6,13 @@
 			$url = substr($url,strrpos($url,"\\/"),strlen($url));  // Retira 2o. '/', se ainda houver esse caracter
 			$url = strstr($url, '/',true);
 		}
+		session_start ();
 		if ($_SESSION['tipo'] == 'personal'){
 			$url = "Location: /" . $url . "/personal/perfilPersonal.php";	// Monta página para reurlecionamento
 			header($url);                                         		// Vai para a página de login / inicial
 			exit();
-		}else if ($_SESSION['tipo'] != 'Administrador'){     	// Não é Professor nem Administrador
-			$url = "Location: " . $url . "/index.php";         			// Monta página para reurlecionamento
+		}else if ($_SESSION['tipo'] != 'aluno'){     	// Não é Professor nem Administrador
+			$url = "Location: " . $url . "/aluno.php";         			// Monta página para reurlecionamento
 			header($url);												// Vai para a página de login / inicial
 			exit();
 		}
@@ -21,7 +22,7 @@
 		<div class="w3-row w3-white w3-padding" >
 			<div class="w3-half" style="margin:0 0 0 0">
 				<a href="."><img src='imagens/logo.jpg' alt=' IE Exemplo '></a>
-			</div>
+			</div>	
 			<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small">
 				<div class="w3-right"><?php 
 					echo $_SESSION['tipo'] . "(a):&nbsp;";

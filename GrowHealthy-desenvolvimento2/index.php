@@ -16,12 +16,12 @@
         <?php
             session_start();
             if (isset($_SESSION['tipo'])) {                                  // Se existe usuário logado, verifica o tipo
-                if ($_SESSION['tipo'] == 'Administrador'){
-                    $url = 'location: /GrowHealthy-desenvolvimento/professor.php';	             
+                if ($_SESSION['tipo'] == 'aluno'){
+                    $url = 'location: /repaginado/aluno.php';	             
                     header($url);                                         	  // Vai para a página inicial de Administrador
                     exit();
-                }else if ($_SESSION['tipo'] == 'Professor'){
-                    $url = 'location: /GrowHealthy-desenvolvimento/professor/perfilProf.php';	 
+                }elseif ($_SESSION['tipo'] == 'personal'){
+                    $url = 'location: /repaginado/personal/perfilPersonal.php';	 
                     header($url);                                         	  // Vai para a página inicial de Professor
                     exit();
                 }
