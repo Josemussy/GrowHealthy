@@ -59,20 +59,6 @@
 						$restricoesAlimentares = $row['restricoesAlimentares'];
 
 									
-						// Faz Select na Base de Dados
-						$sqlG = "SELECT ID_Genero, Nome FROM TB_Genero";
-							
-						$optionsGenero = array();
-						
-						if ($result = $conn->query($sqlG)) {
-							while ($row        = $result->fetch_assoc()) {
-								$selected = "";
-								if ($row['ID_Genero'] == $genero)
-									$selected = "selected";
-								array_push($optionsGenero, "\t\t\t<option " . $selected . " value='". $row["ID_Genero"]."'>".$row["Nome"]."</option>\n");
-							}
-						}
-
 						?>
 						<div class="w3-container w3-theme">
 							<h2>Altere o Treino Cód. = [<?php echo $idAluno; ?>]</h2>
