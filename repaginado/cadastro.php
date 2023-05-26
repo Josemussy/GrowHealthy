@@ -54,7 +54,7 @@
     }
     elseif($tipo == 'nutricionista') {
         $sql = "INSERT INTO Nutricionista (Nome, Genero, Email, CRN, login, dt_nasc, cpf, celular, senha)
-        VALUES ('$nome','$genero','$email', '$cref', '$login','$dt_nasc','$cpf','$celular','$senha')";        
+        VALUES ('$nome','$genero','$email', '$crn', '$login','$dt_nasc','$cpf','$celular','$senha')";        
         }
 
     if ($result = $conn->query($sql)) {

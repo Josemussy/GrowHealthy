@@ -1,14 +1,8 @@
 <?php require 'bd/conectaBD.php'; ?>
-<?php
-	require('verifica_login.php');
+<?php require('verifica_login.php');
     
 	
-	$url = dirname($_SERVER['SCRIPT_NAME']);                   // Obtém URL básica da aplicação Web
-	$url = substr($url,strrpos($url,"\\/")+1,strlen($url));    // Retira 1o. '/'
-	if (substr_count($url, '/') >= 1){                          
-		$url = substr($url,strrpos($url,"\\/"),strlen($url));  // Retira 2o. '/', se ainda houver esse caracter
-		$url = strstr($url, '/',true);
-	}
+	
 	if ($_SESSION['tipo'] == 'personal'){
 		$url = "Location: /" . $url . "/personal.php";	// Monta URL para redirecionamento
 		header($url);                               	 
@@ -29,7 +23,7 @@
         
         <div class="w3-top" id="LoginCadastro" >
             <div class="w3-row w3-white w3-padding" >
-                <div class="w3-half" style="margin:0 0 0 0"><a href="."><img src='imagens/logo1.png' alt='  ' width="50" height="40"></a></div>
+                <div class="w3-half" style="margin:0 0 0 0"><a href="."><img src='imagens/logo1.png' alt=' IE Exemplo ' width="50" height="40"></a></div>
                 <div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small">
                 </div>
             </div>
@@ -38,16 +32,20 @@
                 <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0L').style.display='block'" href="javascript:void(0)" >Meu Perfil </a>
                 <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id1L').style.display='block'" href="javascript:void(0)" >Treinos </a>
                 <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id2L').style.display='block'"href="javascript:void(0)" >Dietas</a>
-                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16 w3-right" style="background-color: #ff0000" onclick="document.getElementById('').style.display='block'"href="javascript:void(0)" >Sair</a>
-            </div>
+                </div>
 	    </div>
         <!-- Logo da página -->
         <div class="w3-top">
             <div class="w3-row w3-white w3-padding">
                 <div class="w3-half" style="margin:0 0 0 0">
-                    <a href="."><img src='imagens/logo1.png' alt='  ' width="50" height="50"></a>
+                    <a href="."><img src='imagens/logo1.png' alt=' IE Exemplo ' width="50" height="50"></a>
                     <b style="font-size:20px">GrowHealthy</b>
                 </div>
+                <div class="w3-right"><?php 
+				    echo $_SESSION['tipo'] . ":&nbsp;";
+				    echo $_SESSION['nome']; 
+				    ?>&nbsp;<a href="logout.php" class="w3-red" style="text-decoration:none; letter-spacing:1px">&nbsp;Sair&nbsp;</a>
+			    </div >
             </div>
         </div>
 
@@ -105,34 +103,9 @@
                     }
                 }
 
-                $msg        = "";
-                $msg_header = "";
-                if(isset($_SESSION['nao_autenticado'])){ 
-                    // Houve falha(login incorreto ou cadastro incorreto)
-                    $msg        = $_SESSION['mensagem'];
-                    $msg_header = $_SESSION['mensagem_header'];
-                    $style      = "display:block"; // div da msg aparece 
-                }else{
-                    // Usuário já autenticado
-                    unset($_SESSION['nao_autenticado']);
-                    $style      = "display:none"; // div da msg não aparece 
-                }
+          
                 ?>
-                <!-- MODAL FAIL: Houve falha(login incorreto ou cadastro incorreto) ou não  --> 
-                <div id="LF" class="w3-modal " style="<?php echo $style;?>">  
-                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
-                        <div class="w3-center"> 
-                            <span onclick="document.getElementById('LF').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
-                        
-                        <h2 class="w3-center w3-xxlarge "><?php echo $msg_header; ?></h2>
-                        <p class="w3-container w3-card-4 w3-light-grey w3-text-cyan w3-margin"><?php echo $msg; ?></p>
-                        <?php 
-                        session_destroy(); // Após msg de erro, destrói elementos de sessão para limpar mgs se nova carga de página
-                        ?>
-                        </div>
-                        <br>
-                    </div>
-                </div>  
+                
                     
                 <!-- MODAL LOGIN: pop up para realizar Login --> 
                 <div id="id0L" class="w3-modal ">
@@ -151,9 +124,9 @@
                             <label class="w3-text-cyan"><b>Peso</b></label>
                             <input class="w3-input w3-border" placeholder="XX,XX" oninput="this.value=this.value.replace(/^(\d{1,2})(\d{1,2})?$|^(\d{1,2})(\d{2})$/, function(match, p1, p2, p3, p4) { return p1 ? p1 + (p2 ? ',' + p2 : '') : p3 + ',' + p4; })" maxlength="5"  onkeypress="return event.charCode >= 48 && event.charCode <= 57"  disabled="disabled" id="peso" name="Peso" type="text" value= "<?php echo $peso; ?>"> 
                             <label class="w3-text-cyan"><b>Restrição Fisica</b></label>
-                            <textarea class="w3-input w3-border" disabled="disabled" id="fisica" name="restricaoFisica" style="max-width: 320px; min-width: 320px;" type="text" placeholder="" value= "<?php echo $restricoesFisicas; ?>"></textarea>
+                            <textarea class="w3-input w3-border" disabled="disabled" id="restFisica" name="restFisica" style="max-width: 320px; min-width: 320px;" type="text" placeholder="" value= "<?php echo $restricoesFisicas; ?>"></textarea>
                             <label class="w3-text-cyan"><b>Restrição Alimentar</b></label>
-                            <textarea class="w3-input w3-border" disabled="disabled" id="aimentar" name="restricaoAlimentar" style="max-width: 320px; min-width: 320px;" type="text" placeholder="" value= "<?php echo $restricoesAlimentares; ?>"></textarea> 
+                            <textarea class="w3-input w3-border" disabled="disabled" id="restAlimentar" name="restAlimentar" style="max-width: 320px; min-width: 320px;" type="text" placeholder="" value= "<?php echo $restricoesAlimentares; ?>"></textarea> 
                             <label class="w3-text-cyan"><b>Senha Nova</b></label>
                             <input class="w3-input w3-border" disabled="disabled" name="SenhaL" id="SenhaL" type="password"  
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}" placeholder="sua senha" 
@@ -173,8 +146,24 @@
 
                     </div>
                 </div>
+                
+                
+                <?php
+
+                $sqlTreino = "SELECT descricao FROM treino WHERE aluno_id = '$idAluno'";
+                echo "<div class='w3-responsive w3-card-4'>";
+				if ($result = $conn->query($sqlTreino)) {
+					if ($result->num_rows == 1) {
+						$row        = $result->fetch_assoc(); 
+						$descricaoTreino     = $row['descricao'];
+                    }
+                    elseif ($result->num_rows == 0){
+                        $descricaoTreino       = "Você não tem nenhum treino cadastrado, solicite um ao seu personal!";
+                    }
+                }
+                ?>
                 <div id="id1L" class="w3-modal ">
-                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
+                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
                         <div class="w3-center"> 
                             <span onclick="document.getElementById('id1L').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
                         </div>
@@ -182,6 +171,7 @@
                         <form action="login.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-cyan w3-margin">
                             <div class="w3-section">
                             <label class="w3-text-cyan"><b>Descrição:</b></label>
+                            <input class="w3-input w3-border w3-light-grey " name="descricao" id = "descricao" type="text"  title="descricao" style="width: 90%;" value= "<?php echo $descricaoTreino ; ?>" readonly>
                             <p/>
                             <label class="w3-text-cyan"><b>Data:</b></label>
                             <p>
@@ -195,8 +185,23 @@
 
                     </div>
                 </div>
+                
+                <?php
+
+                $sqlDieta = "SELECT descricao FROM dieta WHERE aluno_id = '$idAluno'";
+                echo "<div class='w3-responsive w3-card-4'>";
+				if ($result = $conn->query($sqlDieta)) {
+					if ($result->num_rows == 1) {
+						$row        = $result->fetch_assoc(); 
+						$descricaoDieta     = $row['descricao'];
+                    }
+                    elseif ($result->num_rows == 0){
+                        $descricaoDieta       = "Você não tem nenhuma dieta cadastrada, solicite uma ao seu nutricionista!";
+                    }
+                }
+                ?>
                 <div id="id2L" class="w3-modal ">
-                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
+                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
                         <div class="w3-center"> 
                             <span onclick="document.getElementById('id2L').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
                         </div>
@@ -204,6 +209,7 @@
                         <form action="login.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-cyan w3-margin">
                             <div class="w3-section">
                             <label class="w3-text-cyan"><b>Descrição:</b></label>
+                            <input class="w3-input w3-border w3-light-grey " name="descricao" id = "descricao" type="text"  title="descricao" style="width: 90%;" value= "<?php echo $descricaoDieta ; ?>" readonly>
                             <p/>
                             <label class="w3-text-cyan"><b>Data:</b></label>
                             <p>
@@ -219,7 +225,7 @@
                 </div>
                 
 
-                <?php require 'geral/nutricionista.php'; require 'geral/personalSolicitar.php';?>
+                <?php require 'geral/nutriSolicitar.php'; require 'geral/personalSolicitar.php';?>
                 <!-- FIM PRINCIPAL -->
                 </div>
                 <!-- Inclui RODAPE.PHP  -->
@@ -233,8 +239,8 @@
             document.getElementById("email").removeAttribute("disabled");
             document.getElementById("altura").removeAttribute("disabled");
             document.getElementById("peso").removeAttribute("disabled");
-            document.getElementById("fisica").removeAttribute("disabled");
-            document.getElementById("aimentar").removeAttribute("disabled");
+            document.getElementById("restFisica").removeAttribute("disabled");
+            document.getElementById("restAlimentar").removeAttribute("disabled");
             document.getElementById("SenhaL").removeAttribute("disabled");
             document.getElementById("salvar").removeAttribute("disabled");
             }

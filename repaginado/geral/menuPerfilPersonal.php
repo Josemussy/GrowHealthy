@@ -18,7 +18,7 @@
 <div class="w3-top"   >  
 	<div class="w3-row w3-white w3-padding" >
 		<div class="w3-half" style="margin:0 0 0 0"><a href="../">
-			<img src='../imagens/logo1.png' alt=' ' width="50" height="40"></a>
+		<img src='../imagens/logo1.png' alt='GrowHealthy Logo ' width="50" height="40"></a>
 			<b style="font-size:20px">GrowHealthy</b>
 		</div>
 		<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small">

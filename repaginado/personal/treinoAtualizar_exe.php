@@ -30,22 +30,16 @@
 		echo $data;
 		echo "</p> "
 		?>
-		<div class="w3-container w3-cyan">
+		<div class="w3-container w3-theme">
 		<h2>Atualização de Treino</h2>
 		</div>
 		<!-- Acesso ao BD-->
 		<?php
 			// Recebe os dados que foram preenchidos no formulário, com os valores que serão atualizados
-			$id      = $_POST['Id'];  // identifica o registro a ser alterado
-			$nome    = $_POST['Nome'];
-			$celular = $_POST['Celular'];
-			$login   = $_POST['Login'];
-			$dtNasc  = $_POST['DataNasc'];
-			$genero  = $_POST['Genero'];
+			$idAluno      = $_POST['idAluno'];  // identifica o registro a ser alterado
+			$descricao    = $_POST['descricao'];
+			$idPersonal   = $_SESSION['id'];
 			
-			
-			//Criptografa Senha
-			$md5Senha = md5($_POST['Senha']);
 
 			// Cria conexão
 			$conn = new mysqli($servername, $username, $password, $database);
@@ -60,16 +54,13 @@
 			<?php
 		
 			// Faz Update na Base de Dados
-			if ($_FILES['Imagem']['size'] == 0) { // Não recebeu uma imagem binária
-				$sql = "UPDATE TB_Usuario SET Nome = '$nome', Celular = '$celular', DataNasc = '$dtNasc', Login = '$login' , Senha = '$md5Senha' WHERE ID_Usuario = $id";
-			}else{
-				$imagem = addslashes(file_get_contents($_FILES['Imagem']['tmp_name'])); // Prepara para salvar em BD
-				$sql = "UPDATE TB_Usuario SET Nome = '$nome', Celular = '$celular', DataNasc = '$dtNasc', Login = '$login' , Senha = '$md5Senha', Foto = '$imagem' WHERE ID_Usuario = $id";	
-			}
+			$sql = "INSERT INTO Treino (descricao, aluno_id, personal_id) 
+					VALUES ('$descricao','$idAluno','$idPersonal')";
+			
 
 			echo "<div class='w3-responsive w3-card-4'>";
 			if ($result = $conn->query($sql)) {
-				echo "<p>&nbsp;Registro alterado com sucesso! </p>";
+				echo "<p>&nbsp;Treino postado com sucesso! </p>";
 			} else {
 				echo "<p>&nbsp;Erro executando UPDATE: " . $conn-> error . "</p>";
 			}
@@ -80,11 +71,11 @@
 	  </div>
 	</div>
 
-	
+	<?php require '../geral/sobre.php';?>
 	<!-- FIM PRINCIPAL -->
 	</div>
 	<!-- Inclui RODAPE.PHP  -->
-	
+	<?php require '../geral/rodape.php';?>
 
 </body>
 </html>

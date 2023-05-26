@@ -60,15 +60,15 @@
 
 									
 						?>
-						<div class="w3-container w3-cyan">
+						<div class="w3-container w3-theme">
 							<h2>Altere o Treino Cód. = [<?php echo $idAluno; ?>]</h2>
 						</div>
-						<form class="w3-container" action="ProfAtualizar_exe.php" method="post" enctype="multipart/form-data">
+						<form class="w3-container" action="treinoAtualizar_exe.php" method="post" enctype="multipart/form-data">
 							<table class='w3-table-all'>
 								<tr>
 									<td style="width:50%;">
 										<p>
-											<input type="hidden" id="Id" name="Id" value="<?php echo $id_medico; ?>">
+										<input type="hidden" id="idALuno" name="idAluno" value="<?php echo $idAluno; ?>">
 										<p>
 										<label class="w3-text-IE"><b>Nome</b></label>
 										<input class="w3-input w3-border w3-light-grey " name="Nome" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" title="Nome entre 10 e 100 letras." value="<?php echo $nome; ?>" readonly>
@@ -83,7 +83,7 @@
 										</p>
 										<p>
 										<label class="w3-text-IE"><b>Peso</b></label>
-										<input class="w3-input w3-border w3-light-grey " name="Dpeso" type="text" placeholder="Kg" title="Peso" value="<?php echo $peso; ?>" readonly>
+										<input class="w3-input w3-border w3-light-grey " name="peso" type="text" placeholder="Kg" title="Peso" value="<?php echo $peso; ?>" readonly>
 										</p>
 										<label class="w3-text-IE"><b>Restrições Alimentares</b></label>
 										<input class="w3-input w3-border w3-light-grey " name="RestAlimentar" type="text" placeholder="Nenhuma" title="RestAlimentar" value="<?php echo $restricoesAlimentares; ?>" readonly>
@@ -96,7 +96,7 @@
 									</td>
 									<td style="text-align:center;">
 									<p style="text-align:center"><label class="w3-text-IE"><b>Revise e poste aqui o treino: </b></label></p>
-									<input class="w3-input w3-border w3-light-grey " name="postarTreino" id = "postarTreino" type="text"  title="postarTreino" style="width: 90%; height:500px;">
+									<input class="w3-input w3-border w3-light-grey " name="descricao" id = "descricao" type="text"  title="descricao" style="width: 90%; height:500px;">
 										
 									</p>
 									</td>
@@ -105,7 +105,7 @@
 									<td colspan="2" style="text-align:center">
 									<p>
 										<input type="submit" value="Postar Treino" class="w3-btn w3-red" onclick="window.location.href='alunoListar.php'">
-										<input type="button" value="Cancelar" class="w3-btn w3-cyan" onclick="window.location.href='alunoListar.php'">
+										<input type="button" value="Cancelar" class="w3-btn w3-theme" onclick="window.location.href='alunoListar.php'">
 									</p>
 									</td>
 								</tr>
@@ -114,7 +114,7 @@
 		                </form>
 								<?php
 					}else{?>
-								<div class="w3-container w3-cyan">
+								<div class="w3-container w3-theme">
 								<h2>Aluno inexistente</h2>
 								</div>
 								<br
@@ -130,11 +130,11 @@
 			</p>
 		</div>
 
-	
+	<?php require '../geral/sobre.php';?>
 	<!-- FIM PRINCIPAL -->
 	</div>
 	<!-- Inclui RODAPE.PHP  -->
-	
+	<?php require '../geral/rodape.php';?>
 
 </body>
 </html>

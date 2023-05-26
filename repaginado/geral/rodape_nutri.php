@@ -1,20 +1,72 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GrowHealthy</title>
+    <link rel="icon" type="image/png" href="imagens/logo1.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="../css/customize.css">
+</head>
+<?php require 'bd/conectaBD.php'; ?>
 
 <div id="Nutri" class="w3-modal w3-animate-opacity" >
-    <div class="w3-modal-content" style="max-width:500px">
+    <div class="w3-modal-content">
         <header class="w3-container w3-cyan">
             <span onclick="document.getElementById('Nutri').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-            <h2>Nutricionistas</h2>
-        </header>
-        <div class="w3-container">
-        <select class="w3-input w3-border w3-sand">
-            <option value="joao">João</option>
-            <option value="maria">Maria</option>
-            <option value="pedro">Pedro</option>
-        </select>
-        </div>
-        <footer class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16">
-            <button class="w3-btn w3-cyan w3-hover-white">Contratar</button>
-        </footer>
+            <h2>Escolha um(a) Nutricionista para fazer seu atendimento</h2>
+			</div>
+
+            <!-- Acesso ao BD-->
+            <?php
+                $idAluno = $_SESSION['id'];
+                
+                // Cria conexão
+				$conn = new mysqli($servername, $username, $password, $database);
+
+				// Verifica conexão 
+				if ($conn->connect_error) {
+					die("<strong> Falha de conexão: </strong>" . $conn->connect_error);
+				}
+
+                // Faz Select na Base de Dados
+                $sql = "SELECT id, nome, crn FROM nutricionista";
+                echo "<div class='w3-modal-content'>";
+                if ($result = $conn->query($sql)) {
+                    echo "<table class='w3-table-all'>";
+                    echo "	<tr>";
+                    echo "	  <th>id</th>";
+                    echo "	  <th>Nome</th>";
+                    echo "	  <th>crn</th>";       
+                    echo "	  <th> </th>";
+                    echo "	  <th> </th>";
+                    echo "	</tr>";
+                    if ($result->num_rows > 0) {
+                        // Apresenta cada linha da tabela
+                        while ($row = $result->fetch_assoc() ) {
+                            
+                            echo "<tr>";
+                            echo "</td><td>";
+                            echo $row["id"];
+                            echo "</td><td>";
+                            echo $row["nome"];
+                            echo "</td><td>";
+                            echo $row['crn'];
+                            echo "</td><td>";
+                            ?>                      
+                            <a href='geral/nutriSolicitar_exe.php?id=<?php echo $row['id']; ?>' class = "button">Contratar</a>
+                            </td><td>
+                            
+                            </tr>
+            <?php
+                        }
+                    }
+                        echo "</table>";
+                        echo "</div>";
+                } else {
+                    echo "Erro executando SELECT: " . $conn->connect_error;
+                }
+                $conn->close();
+
+            ?>
     </div>
 </div>
