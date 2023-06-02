@@ -75,7 +75,7 @@
                             echo "</td><td>";
                             //Atualizar e Excluir registro de personal
             ?>                      
-                            <a style="text-decoration:none" class ="button w3-btn w3-cyan w3-hover-white" href='treinoAtualizar.php?id=<?php echo $row['id']; ?>'>MONTAR TREINO COM IA</a>
+                            <a style="text-decoration:none" class ="button w3-btn w3-cyan w3-hover-white" href='treinoAtualizar.php?id=<?php echo $row['id']; ?>'>MONTAR TREINO</a>
                             
                             </td><td>
                             

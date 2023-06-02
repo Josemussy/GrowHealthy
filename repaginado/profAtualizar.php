@@ -43,7 +43,7 @@
 				}
 
 				// Faz Select na Base de Dados
-				$sql = "SELECT Nome, Genero, Celular, dt_nasc, login  FROM Personal WHERE CREF = $cref";
+				$sql = "SELECT Nome, Genero, celular, dt_nasc, login  FROM Personal WHERE CREF = $cref";
 
 				//Inicio DIV form
 				echo "<div class='w3-responsive w3-card-4'>";
@@ -51,8 +51,8 @@
 					if ($result->num_rows == 1) {
 						$row        = $result->fetch_assoc(); 
 						$nome       = $row['Nome'];
-                        $genero     = $row['Genero']
-						$celular    = $row['Celular'];
+                        $genero     = $row['Genero'];
+						$celular    = $row['celular'];
 						$dataNasc   = $row['dt_nasc'];
 						$login      = $row['login'];
 									

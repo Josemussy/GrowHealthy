@@ -26,16 +26,16 @@
 
     $nome    = $conn->real_escape_string($_POST['nome']);    // prepara a string recebida para ser utilizada em comando SQL
     $login   = $conn->real_escape_string($_POST['Login']);   // prepara a string recebida para ser utilizada em comando SQL
-    $celular = $conn->real_escape_string($_POST['Celular']); // prepara a string recebida para ser utilizada em comando SQL
-    $email = $conn->real_escape_string($_POST['Email']);
+    $celular = $conn->real_escape_string($_POST['celular']); // prepara a string recebida para ser utilizada em comando SQL
+    $email   = $conn->real_escape_string($_POST['Email']);
     $senha   = $conn->real_escape_string($_POST['Senha']);   // prepara a string recebida para ser utilizada em comando SQL
     $dt_nasc = $conn->real_escape_string($_POST['dt_nasc']); // prepara a string recebida para ser utilizada em comando SQL
     $genero  = $conn->real_escape_string($_POST['genero']);  // prepara a string recebida para ser utilizada em comando SQL
-    $cpf  = $conn->real_escape_string($_POST['cpf']);  // prepara a string recebida para ser utilizada em comando SQL
-    $tipo  = $conn->real_escape_string($_POST['tipo']);  // prepara a string recebida para ser utilizada em comando SQL
-    $crn = $conn->real_escape_string($_POST['crn']);  // prepara a string recebida para ser utilizada em comando SQL
-    $cref  = $conn->real_escape_string($_POST['cref']);  // prepara a string recebida para ser utilizada em comando SQL
-    $peso  = $conn->real_escape_string($_POST['peso']);  // prepara a string recebida para ser utilizada em comando SQL
+    $cpf     = $conn->real_escape_string($_POST['cpf']);  // prepara a string recebida para ser utilizada em comando SQL
+    $tipo    = $conn->real_escape_string($_POST['tipo']);  // prepara a string recebida para ser utilizada em comando SQL
+    $crn     = $conn->real_escape_string($_POST['crn']);  // prepara a string recebida para ser utilizada em comando SQL
+    $cref    = $conn->real_escape_string($_POST['cref']);  // prepara a string recebida para ser utilizada em comando SQL
+    $peso    = $conn->real_escape_string($_POST['peso']);  // prepara a string recebida para ser utilizada em comando SQL
     $altura  = $conn->real_escape_string($_POST['altura']);  // prepara a string recebida para ser utilizada em comando SQL
 
     //Criptografa Senha
@@ -45,7 +45,7 @@
 
     // Não recebe uma imagem binária e faz Insert na Base de Dados
     if ($tipo == 'aluno') {
-    $sql = "INSERT INTO Aluno (cpf, login, celular, nome, Genero, email,Peso,Altura,senha)
+    $sql = "INSERT INTO Aluno (cpf, login, Celular, nome, Genero, email,Peso,Altura,senha)
      VALUES ('$cpf','$login','$celular', '$nome', '$genero','$email','$peso','$altura','$senha')";
     }
     elseif($tipo == 'personal') {
