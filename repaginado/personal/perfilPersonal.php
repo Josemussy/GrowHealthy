@@ -14,10 +14,12 @@
 		<?php require '../geral/menuPerfilPersonal.php'; ?>
 
 		<!-- Conteúdo PRINCIPAL: deslocado para direita em 270 pixels quando a sidebar é visível -->
-		<div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
+		<div class="w3-main w3-container" style="margin-left:270px;margin-top:200px;margin-right:270px;">
 
 			<div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
 				<h1 class="w3-jumbo">Meus Dados: Personal</h1>
+
+				<img src="../imagens/personal.png" class="w3-round-xxlarge" width="70%"  style="max-width:500px">
 
 	
 

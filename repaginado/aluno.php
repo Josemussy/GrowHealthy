@@ -65,7 +65,7 @@
         </div>
 
         <!-- Conteúdo PRINCIPAL: deslocado para direita em 270 pixels quando a sidebar é visível -->
-		<div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
+		<div class="w3-main w3-container" style="margin-left:270px;margin-top:200px;margin-right:270px;">
             <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey" >
                 <h1 class="w3-jumbo">Painel Aluno</h1>
                 <h3 class="">Funcionalidades:</h3>
@@ -109,7 +109,7 @@
                     
                 <!-- MODAL LOGIN: pop up para realizar Login --> 
                 <div id="id0L" class="w3-modal ">
-                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
+                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:1000px">
                         <div class="w3-center"> 
                             <span onclick="document.getElementById('id0L').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
                         </div>
@@ -124,14 +124,20 @@
                             <label class="w3-text-cyan"><b>Peso</b></label>
                             <input class="w3-input w3-border" placeholder="XX,XX" oninput="this.value=this.value.replace(/^(\d{1,2})(\d{1,2})?$|^(\d{1,2})(\d{2})$/, function(match, p1, p2, p3, p4) { return p1 ? p1 + (p2 ? ',' + p2 : '') : p3 + ',' + p4; })" maxlength="5"  onkeypress="return event.charCode >= 48 && event.charCode <= 57"  disabled="disabled" id="peso" name="Peso" type="text" value= "<?php echo $peso; ?>"> 
                             <label class="w3-text-cyan"><b>Restrição Fisica</b></label>
-                            <textarea class="w3-input w3-border" disabled="disabled" id="restFisica" name="restFisica" style="max-width: 320px; min-width: 320px;" type="text" placeholder="" value= "<?php echo $restricoesFisicas; ?>"></textarea>
+                            <textarea class="w3-input w3-border" disabled="disabled" id="restFisica" name="restFisica" style="max-width: 835px; min-width: 835px;" type="text" placeholder="" value= "<?php echo $restricoesFisicas; ?>"></textarea>
                             <label class="w3-text-cyan"><b>Restrição Alimentar</b></label>
-                            <textarea class="w3-input w3-border" disabled="disabled" id="restAlimentar" name="restAlimentar" style="max-width: 320px; min-width: 320px;" type="text" placeholder="" value= "<?php echo $restricoesAlimentares; ?>"></textarea> 
+                            <textarea class="w3-input w3-border" disabled="disabled" id="restAlimentar" name="restAlimentar" style="max-width: 835px; min-width: 835px;" type="text" placeholder="" value= "<?php echo $restricoesAlimentares; ?>"></textarea> 
                             <label class="w3-text-cyan"><b>Senha Nova</b></label>
                             <input class="w3-input w3-border" disabled="disabled" name="SenhaL" id="SenhaL" type="password"  
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}" placeholder="sua senha" 
                             title="Deve conter ao menos um número, uma letra maiúscula, uma letra minúscula, um caracter especial, e ter de 6 a 8 caracteres" 
                             required>
+                            <p>
+                                <input type="button" id="excluir" value="Excluir Conta" class="w3-button w3-block w3-red w3-section w3-padding" onclick="excluirConta()" style="display: block;"> 
+                                <input type="button" id="confirmar" value="Confirmar Exlusão" class="w3-button w3-block w3-red w3-section w3-padding" onclick="" style="display: none;"> 
+                                <p></p>
+                                <input type="button" id="cancelar" value="Cancelar Exclusão" class="w3-button w3-block w3-green w3-section w3-padding" onclick="cancelarExclusao()" style="display: none;">
+                            </p>
                             <span>
                                 <button class="w3-button w3-block w3-cyan w3-section w3-padding" onclick="editarInformacoes()" id="editar">Editar informações</button>
                                 <button class="w3-button w3-block w3-cyan w3-section w3-padding" disabled="disabled" id="salvar" type="submit">Salvar alterações</button>
@@ -172,9 +178,9 @@
                             <div class="w3-section">
                             <label class="w3-text-cyan"><b>Descrição:</b></label>
                             <input class="w3-input w3-border w3-light-grey " name="descricao" id = "descricao" type="text"  title="descricao" style="width: 90%;" value= "<?php echo $descricaoTreino ; ?>" readonly>
-                            <p/>
-                            <label class="w3-text-cyan"><b>Data:</b></label>
                             <p>
+                           
+                      
                             </p>
                             </div>
                         </form>
@@ -210,9 +216,8 @@
                             <div class="w3-section">
                             <label class="w3-text-cyan"><b>Descrição:</b></label>
                             <input class="w3-input w3-border w3-light-grey " name="descricao" id = "descricao" type="text"  title="descricao" style="width: 90%;" value= "<?php echo $descricaoDieta ; ?>" readonly>
-                            <p/>
-                            <label class="w3-text-cyan"><b>Data:</b></label>
                             <p>
+
                             </p>
                             </div>
                         </form>
@@ -244,6 +249,20 @@
             document.getElementById("SenhaL").removeAttribute("disabled");
             document.getElementById("salvar").removeAttribute("disabled");
             }
+
+          
+            function excluirConta() {
+                document.getElementById('excluir').style.display = 'none';
+                document.getElementById('confirmar').style.display = 'block';
+                document.getElementById('cancelar').style.display = 'block';
+            }
+
+            function cancelarExclusao() {
+                document.getElementById('excluir').style.display = 'block';
+                document.getElementById('confirmar').style.display = 'none';
+                document.getElementById('cancelar').style.display = 'none';
+            }
+	
         </script>
 	</body>
 </html>

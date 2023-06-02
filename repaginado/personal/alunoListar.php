@@ -15,7 +15,7 @@
 <!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
 <div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
 
-    <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
+    <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey" style="margin-right:250px;margin-top:100px;">
         <p class="w3-large">
         <p>
         <div class="w3-code cssHigh notranslate">
@@ -75,7 +75,8 @@
                             echo "</td><td>";
                             //Atualizar e Excluir registro de personal
             ?>                      
-                            <a href='treinoAtualizar.php?id=<?php echo $row['id']; ?>'><img src='../imagens/Edit.png' title='Postar Treino' width='32'></a>
+                            <a style="text-decoration:none" class ="button w3-btn w3-cyan w3-hover-white" href='treinoAtualizar.php?id=<?php echo $row['id']; ?>'>MONTAR TREINO COM IA</a>
+                            
                             </td><td>
                             
                             </tr>

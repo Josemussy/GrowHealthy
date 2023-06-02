@@ -17,7 +17,7 @@
 	<?php require '../bd/conectaBD.php'; ?>
 
 	<!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
-	<div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
+	<div class="w3-main w3-container" style="margin-left:270px;margin-top:150px;margin-right:270px;">
 		<div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
 			<p class="w3-large">
 			<div class="w3-code cssHigh notranslate">
@@ -114,6 +114,12 @@
 										<p>
 											<input type="checkbox" id="chkC" class="w3-btn w3-cyan" onclick="mostrarOcultarSenha(1)"> Mostrar senha
 										</p>
+										<p>
+											<input type="button" id="excluir" value="Excluir Conta" class="w3-btn w3-red" onclick="excluirConta()" style="display: block; margin-left: 230px; margin-top:100px;"> 
+											<input type="button" id="confirmar" value="Confirmar Exlusão" class="w3-btn w3-red" onclick="" style="display: none; margin-left: 230px; margin-top:100px;"> 
+											<p></p>
+											<input type="button" id="cancelar" value="Cancelar Exclusão" class="w3-btn w3-green" onclick="cancelarExclusao()" style="display: none; margin-left: 230px; margin-top:10px;">
+										</p>
 										
 									</td>
 								</tr>
@@ -121,7 +127,7 @@
 									<td colspan="2" style="text-align:center">
 										<p>
 											<input type="submit" value="Alterar" class="w3-btn w3-red">
-											<input type="button" value="Cancelar" class="w3-btn w3-cyan" onclick="window.location.href='profListar.php'">
+											<input type="button" value="Cancelar" class="w3-btn w3-green" onclick="window.location.href='perfilPersonal.php'">
 										</p>
 								</tr>
 							</table>
@@ -150,7 +156,21 @@
 	</div>
 	<!-- Inclui RODAPE.PHP  -->
 
+	<script>
+		function excluirConta() {
+			document.getElementById('excluir').style.display = 'none';
+            document.getElementById('confirmar').style.display = 'block';
+            document.getElementById('cancelar').style.display = 'block';
+		}
 
+		function cancelarExclusao() {
+			document.getElementById('excluir').style.display = 'block';
+            document.getElementById('confirmar').style.display = 'none';
+            document.getElementById('cancelar').style.display = 'none';
+		}
+
+		
+	</script>
 </body>
 
 </html>

@@ -14,9 +14,9 @@
 <?php require 'bd/conectaBD.php'; ?>
 
 <!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
-<div class="w3-main w3-container" style="margin-left:270px;margin-top:117px;">
+<div class="w3-main w3-container" style="margin-left:270px;margin-top:15px;margin-right:270px;">
 
-    <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey">
+    <div class="w3-main w3-container" style="margin-left:270px;margin-top:200px;margin-right:270px;">
         <p class="w3-large">
         <p>
         <div class="w3-code cssHigh notranslate">
@@ -30,7 +30,7 @@
                 echo $data;
                 echo "</p> "
             ?>
-            <div class="w3-container w3-cyan">
+            <div class="w3-main w3-container" style="margin-left:270px;margin-top:200px;margin-right:270px;">
 			<h2>Listagem de Professores</h2>
 			</div>
 
