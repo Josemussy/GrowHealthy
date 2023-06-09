@@ -73,6 +73,7 @@
 						$row        = $result->fetch_assoc(); 
 						$idAluno    = $row['id'];
 						$nome       = $row['nome'];
+						$dataNasc   = $row['dt_nasc'];
 						$genero     = $row['genero'];
 						$altura     = $row['altura'];
 						$peso       = $row['peso'];

@@ -103,7 +103,6 @@
                     }
                 }
 
-          
                 ?>
                 
                     
@@ -264,5 +263,15 @@
             }
 	
         </script>
+        
 	</body>
 </html>
+
+<?php
+
+    if (isset($_SESSION['mensagem'])){
+        echo'<script>alert("contratado")</script>';
+        unset($_SESSION['mensagem']);
+    }
+
+?>
