@@ -55,7 +55,12 @@
             }
             elseif( $_SESSION ['tipo'] == 'aluno'){           
                 $conn->close();  //Encerra conexao com o BD
-                header('location: /repaginado/aluno.php');  // Perfil Personal
+                header('location: /repaginado/aluno.php');  // Perfil Aluno
+                exit();
+            }
+            elseif( $_SESSION ['tipo'] == 'nutricionista'){           
+                $conn->close();  //Encerra conexao com o BD
+                header('location: /repaginado/nutricionista/perfilNutricionista.php');  // Perfil Nutricionista
                 exit();
             }
             //}else {  
@@ -64,10 +69,13 @@
             //    exit();
             //}
         }
+        elseif ($result->num_rows == 0){
+            echo ("Não tá dando select");
+        }
         else{
             $_SESSION['nao_autenticado'] = true;
             $_SESSION['mensagem_header'] = "Login";
-            $_SESSION['mensagem']        = "Senha ou usuário incorreto.";
+            $_SESSION['mensagem']        = "Senha ou usuário incorreto.". $senha ;
             $conn->close();  //Encerra conexao com o BD
             header('location: index.php'); 
             exit();
@@ -77,7 +85,7 @@
         $msg = "Erro ao acessar o BD: " . $conn-> error . ".";
         $_SESSION['nao_autenticado'] = true;
         $_SESSION['mensagem_header'] = "Login";
-        $_SESSION['mensagem'] = $msg;
+        $_SESSION['mensagem']        = $msg;
         $conn->close();  //Encerra conexao com o BD
         header('location: index.php'); 
     }

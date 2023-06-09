@@ -19,13 +19,8 @@ if (isset($_SESSION['id'])) {
 $sql = "UPDATE aluno SET personal_id='$idPersonal' WHERE id = '$idAluno'";
 
 $resultado = mysqli_query($conn, $sql);
-$msg = null;
 if ($resultado) {
-    $msg = "Contratado";
+    echo "Query executada com sucesso!";
 } else {
     echo "Erro ao executar a query: " . mysqli_error($conexao);
 }
-
-$_SESSION['mensagem'] = $msg;
-header('location: ../aluno.php'); 
-?>
