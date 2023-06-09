@@ -227,29 +227,33 @@
                             <div class="w3-row w3-section" id="cref" style="display: none;">
                                 <div class="w3-rest">
                                 <label class="w3-text-cyan"><b>CREF</b>*</label>
-                                <input class="w3-input w3-border"  name="cref" type="text" placeholder=" " >
+                                <input pattern='^[0-9]{6}-[A-Z]/[A-Z]{2}$'
+                                maxlength="11"
+                                class="w3-input w3-border"  name="cref" type="text" placeholder=" " >
                                 </div>
                             </div>
 
                             <div class="w3-row w3-section" id="crn" style="display: none;">
                                 <div class="w3-rest">
                                 <label class="w3-text-cyan"><b>CRN</b>*</label>
-                                <input class="w3-input w3-border"  name="crn" type="text" placeholder=" " >
+                                <input pattern='^[0-9]{6}-[A-Z]/[A-Z]{2}$'
+                                maxlength="11"
+                                class="w3-input w3-border"  name="crn" type="text" placeholder=" " >
                                 </div>
                             </div>
 
                             <div class="w3-row w3-section" id="peso" style="display: none;">
                                 <div class="w3-rest"> 
                                 <label class="w3-text-cyan"><b>Peso</b>*</label>
-                                <input class="w3-input w3-border" type="text" id="peso" name="peso"  placeholder="EX: 68,90" oninput="this.value=this.value.replace(/^(\d{1,2})(\d{1,2})?$|^(\d{1,2})(\d{2})$/, function(match, p1, p2, p3, p4) { return p1 ? p1 + (p2 ? ',' + p2 : '') : p3 + ',' + p4; })" maxlength="5"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" >
+                                <input pattern="(\s)?\d+([.,])?\d+(\s)?" class="w3-input w3-border" type="text" id="peso" name="peso" placeholder="EX: 68,90" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')" maxlength="6"  min="20" max="300">
 
                                 </div>
                             </div>
 
                             <div class="w3-row w3-section" id="altura" style="display: none;">
                                 <div class="w3-rest">
-                                <label class="w3-text-cyan"><b>Altura</b>*</label>
-                                <input class="w3-input w3-border" type="text" id="altura" name="altura"   placeholder="EX:171" maxlength="3" onkeypress="return event.charCode >= 48 && event.charCode <= 57" >
+                                <label class="w3-text-cyan"><b>Altura em cm</b>*</label>
+                                <input class="w3-input w3-border" type="text" id="altura" name="altura"   placeholder="EX:171" maxlength="3" onkeypress="return event.charCode >= 48 && event.charCode <= 57"  min="60" max="230">
 
                                 </div>
                             </div>
@@ -260,7 +264,7 @@
                                 <div class="w3-rest">
                                 <label class="w3-text-cyan"><b>Senha</b>*</label> 
                                 <input class="w3-input w3-border " name="Senha" id="Senha" type="password" onchange="confirmaSenha()"
-                                    
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}"
                                     title="Deve conter ao menos um número, uma letra maiúscula, uma letra minúscula, um caracter especial, e ter de 6 a 8 caracteres" 
                                     > 
                                 </div>

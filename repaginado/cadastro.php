@@ -43,28 +43,60 @@
         
     $tipoUsu = 1; // Usuário Administrador
 
+    $verify = true;
+    $dado = '';
     // Não recebe uma imagem binária e faz Insert na Base de Dados
     if ($tipo == 'aluno') {
     $sql = "INSERT INTO Aluno (cpf, login, Celular, nome, Genero, email,Peso,Altura,senha)
      VALUES ('$cpf','$login','$celular', '$nome', '$genero','$email','$peso','$altura','$senha')";
+        $find = "SELECT * FROM Aluno WHERE cpf = '$cpf'";
+        $verify = ($conn->query($find)->num_rows == 0);
+        $dado = 'cpf';
     }
     elseif($tipo == 'personal') {
     $sql = "INSERT INTO Personal (Nome, Genero, Email, CREF, login, dt_nasc, cpf, celular, senha)
-    VALUES ('$nome','$genero','$email', '$cref', '$login','$dt_nasc','$cpf','$celular','$senha')";        
+    VALUES ('$nome','$genero','$email', '$cref', '$login','$dt_nasc','$cpf','$celular','$senha')"; 
+   
+        $find = "SELECT * FROM Personal WHERE cpf = '$cpf'"; 
+        $find2 = "SELECT * FROM Personal WHERE CREF = '$cref'";
+        $verify = ($conn->query($find)->num_rows + $conn->query($find2)->num_rows == 0);  
+        $dado = 'Cref ou Cpf'; 
+
     }
     elseif($tipo == 'nutricionista') {
         $sql = "INSERT INTO Nutricionista (Nome, Genero, Email, CRN, login, dt_nasc, cpf, celular, senha)
-        VALUES ('$nome','$genero','$email', '$crn', '$login','$dt_nasc','$cpf','$celular','$senha')";        
+        VALUES ('$nome','$genero','$email', '$crn', '$login','$dt_nasc','$cpf','$celular','$senha')"; 
+            
+
+        $find = "SELECT * FROM Nutricionista WHERE cpf = '$cpf'"; 
+        $find2 = "SELECT * FROM Nutricionista WHERE CRN = '$crn'";
+        $verify = ($conn->query($find)->num_rows + $conn->query($find2)->num_rows == 0);  
+        $dado = 'Cref ou Cpf'; 
+
         }
 
-    if ($result = $conn->query($sql)) {
-        $msg = "Registro cadastrado com sucesso! Você já pode realizar login.";
+    
+
+    if ($verify) {
+        if ($result = $conn->query($sql)) {
+            $msg = "Registro cadastrado com sucesso! Você já pode realizar login.";
+        } else {
+            $msg = "Erro executando INSERT: " . $conn-> error . " Tente novo cadastro.";
+        } 
+
+
+    
     } else {
-        $msg = "Erro executando INSERT: " . $conn-> error . " Tente novo cadastro.";
+        $msg = $dado." cadastrado(s). Por favor preencha com novos dados.";
     }
+
+
+
+
+
     $_SESSION['nao_autenticado'] = true;
     $_SESSION['mensagem_header'] = "Cadastro";
-    $_SESSION['mensagem']        = $msg;
+    $_SESSION['mensagem'] = $msg;
     $conn->close();  //Encerra conexao com o BD
     header('location: index.php'); 
     ?>
