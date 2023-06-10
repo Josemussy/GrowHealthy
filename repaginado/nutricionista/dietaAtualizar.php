@@ -87,7 +87,7 @@
 						<div class="w3-container w3-theme">
 							<h2>Altere a Dieta [<?php echo $idAluno; ?>]</h2>
 						</div>
-						<form class="w3-container" action="treinoAtualizar_exe.php" method="post" enctype="multipart/form-data">
+						<form class="w3-container" action="dietaAtualizar_exe.php" method="post" enctype="multipart/form-data">
 							<table class='w3-table-all'>
 								<tr>
 									<td style="width:50%;">
@@ -121,8 +121,8 @@
 									<td style="text-align:center;">
 										<p style="text-align:center"><label class="w3-text-IE"><b>Revise e poste aqui a dieta:
 												</b></label></p>
-										<textarea class="w3-input w3-border w3-light-grey " name="postarTreino"
-											id="postarTreino" type="text" title="postarTreino"
+										<textarea class="w3-input w3-border w3-light-grey " name="postarDieta"
+											id="postarDieta" type="text" title="postarDieta"
 											style="width: 90%; height:500px;"><?php echo $descricao; ?></textarea>
 										</p>
 									</td>

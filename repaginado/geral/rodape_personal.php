@@ -55,7 +55,7 @@
                             echo $row['cref'];
                             echo "</td><td>";
                             ?>                      
-                            <a class="w3-btn w3-cyan w3-hover-white" style="text-decoration:none" href='geral/nutriSolicitar_exe.php?id=<?php echo $row['id']; ?>' class = "button">Contratar</a>
+                            <a class="w3-btn w3-cyan w3-hover-white" style="text-decoration:none" href='geral/personalSolicitar_exe.php?id=<?php echo $row['id']; ?>' class = "button">Contratar</a>
                             
                             </td><td>
                             

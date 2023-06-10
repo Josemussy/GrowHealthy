@@ -46,18 +46,18 @@
 
 
 				// Faz Select na Base de Dados
-				$sql = "SELECT nome, celular, genero, dt_nasc, login, id FROM Personal WHERE id = '$id'";
+				$sql = "SELECT nome, celular, email, dt_nasc, login, id FROM Personal WHERE id = '$id'";
 
 				//Inicio DIV form
 				echo "<div class='w3-responsive w3-card-4'>";
 				if ($result = $conn->query($sql)) {
 					if ($result->num_rows == 1) {
 						$row = $result->fetch_assoc();
-						$genero     = $row['genero'];
 						$nome       = $row['nome'];
 						$celular    = $row['celular'];
-						$dt_nasc   = $row['dt_nasc'];
+						$dt_nasc    = $row['dt_nasc'];
 						$login      = $row['login'];
+						$email      = $row['email'];
 
 						
 
@@ -65,7 +65,7 @@
 						<div class="w3-container w3-cyan">
 							<h2>Altere os dados do Personal</h2>
 						</div>
-						<form class="w3-container" action="cadProf_exe.php" method="post" enctype="multipart/form-data">
+						<form class="w3-container" action="cadPersonal_exe.php" method="post" enctype="multipart/form-data">
 							<table class='w3-table-all'>
 								<tr>
 									<td style="width:50%;">
@@ -73,26 +73,19 @@
 											<input type="hidden" id="Id" name="Id" value="<?php echo $cref; ?>">
 										<p>
 											<label class="w3-text-IE"><b>Nome</b></label>
-											<input class="w3-input w3-border w3-sand" name="Nome" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" title="Nome entre 10 e 100 letras." value="<?php echo $nome; ?>" required>
+											<input class="w3-input w3-border w3-sand" name="Nome" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" title="Nome entre 10 e 100 letras." value="<?php echo $nome; ?>" readonly>
+										</p>
+										<p>
+											<label class="w3-text-IE"><b>Data de Nascimento</b></label>
+											<input class="w3-input w3-border w3-sand" name="dt_nasc" type="text" pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19[0-9][0-9]|20(0[0-9]|1[0-2]))$" maxlength=10 minlength=10 title="dd/mm/aaaa" title="Formato: dd/mm/aaaa" value="<?php echo $dt_nasc; ?>" readonly>
 										</p>
 										<p>
 											<label class="w3-text-IE"><b>Celular</b></label>
 											<input class="w3-input w3-border w3-sand " name="Celular" type="text" id="Celular" type="text" maxlength="15" pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$" title="(XX)XXXXX-XXXX" value="<?php echo $celular; ?>" required>
 										</p>
 										<p>
-											<label class="w3-text-IE"><b>Data de Nascimento</b></label>
-											<input class="w3-input w3-border w3-sand" name="dt_nasc" type="date" pattern="((0[1-9])|([1-2][0-9])|(3[0-1]))\/((0[1-9])|(1[0-2]))\/((19|20)[0-9][0-9])" placeholder="dd/mm/aaaa" title="dd/mm/aaaa" title="Formato: dd/mm/aaaa" value="<?php echo $dt_nasc; ?>">
-										</p>
-
-										<p><label class="w3-text-IE"><b>Gênero</b>*</label>
-											<select name="Genero" id="Genero" class="w3-input w3-border w3-sand" value = "<?php echo $genero; ?>" required >
-
-												<?php
-												foreach ($optionsGenero as $key => $value) {
-													echo $value;
-												}
-												?>
-											</select>
+											<label class="w3-text-IE"><b>Email</b></label>
+											<input class="w3-input w3-border w3-sand" name="email" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="email" value="<?php echo $email; ?>" required>
 										</p>
 
 										<p>
@@ -127,7 +120,7 @@
 									<td colspan="2" style="text-align:center">
 										<p>
 											<input type="submit" value="Alterar" class="w3-btn w3-red">
-											<input type="button" value="Cancelar" class="w3-btn w3-green" onclick="window.location.href='perfilPersonal.php'">
+											<input type="button" value="Cancelar" class="w3-btn w3-green" onclick="window.location.href='perfilNutricionista.php'">
 										</p>
 								</tr>
 							</table>

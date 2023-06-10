@@ -60,7 +60,7 @@
 
 			echo "<div class='w3-responsive w3-card-4'>";
 			if ($result = $conn->query($sql)) {
-				echo "<p>&nbsp;Treino postado com sucesso! </p>";
+				echo "<p>&nbsp;Dieta postada com sucesso! </p>";
 			} else {
 				echo "<p>&nbsp;Erro executando UPDATE: " . $conn-> error . "</p>";
 			}

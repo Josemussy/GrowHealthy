@@ -69,13 +69,11 @@
             //    exit();
             //}
         }
-        elseif ($result->num_rows == 0){
-            echo ("Não tá dando select");
-        }
+        
         else{
             $_SESSION['nao_autenticado'] = true;
             $_SESSION['mensagem_header'] = "Login";
-            $_SESSION['mensagem']        = "Senha ou usuário incorreto.". $senha ;
+            $_SESSION['mensagem']        = "Senha ou usuário incorreto.";
             $conn->close();  //Encerra conexao com o BD
             header('location: index.php'); 
             exit();

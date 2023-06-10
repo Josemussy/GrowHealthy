@@ -26,7 +26,7 @@
 
     $nome    = $conn->real_escape_string($_POST['nome']);    // prepara a string recebida para ser utilizada em comando SQL
     $login   = $conn->real_escape_string($_POST['Login']);   // prepara a string recebida para ser utilizada em comando SQL
-    $celular = $conn->real_escape_string($_POST['celular']); // prepara a string recebida para ser utilizada em comando SQL
+    $celular = $conn->real_escape_string($_POST['Celular']); // prepara a string recebida para ser utilizada em comando SQL
     $email   = $conn->real_escape_string($_POST['Email']);
     $senha   = $conn->real_escape_string($_POST['Senha']);   // prepara a string recebida para ser utilizada em comando SQL
     $dt_nasc = $conn->real_escape_string($_POST['dt_nasc']); // prepara a string recebida para ser utilizada em comando SQL
@@ -38,16 +38,13 @@
     $peso    = $conn->real_escape_string($_POST['peso']);  // prepara a string recebida para ser utilizada em comando SQL
     $altura  = $conn->real_escape_string($_POST['altura']);  // prepara a string recebida para ser utilizada em comando SQL
 
-    //Criptografa Senha
-	$md5Senha = md5($senha);
-        
-    $tipoUsu = 1; // Usuário Administrador
+    
 
     $verify = true;
     $dado = '';
     // Não recebe uma imagem binária e faz Insert na Base de Dados
     if ($tipo == 'aluno') {
-    $sql = "INSERT INTO Aluno (cpf, login, Celular, nome, Genero, email,Peso,Altura,senha)
+    $sql = "INSERT INTO Aluno (cpf, login, celular, nome, Genero, email,Peso,Altura,senha)
      VALUES ('$cpf','$login','$celular', '$nome', '$genero','$email','$peso','$altura','$senha')";
         $find = "SELECT * FROM Aluno WHERE cpf = '$cpf'";
         $verify = ($conn->query($find)->num_rows == 0);

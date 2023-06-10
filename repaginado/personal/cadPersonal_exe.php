@@ -23,7 +23,10 @@
 			<p class="w3-large">
 			<div class="w3-code cssHigh notranslate">
 				<!-- Acesso em:-->
-				<?php
+				<<?php
+				
+
+				$idPersonal = $_SESSION['id'];
 
 				date_default_timezone_set("America/Sao_Paulo");
 				$data = date("d/m/Y H:i:s", time());
@@ -38,30 +41,12 @@
 				<!-- Acesso ao BD-->
 				<?php
 				// Recebe os dados que foram preenchidos no formulário, com os valores que serão atualizados
-				$cref    = $_POST['CREF'];  // identifica o registro a ser alterado
-				$nome    = $_POST['Nome'];
-				$celular = $_POST['Celular'];
-				$login   = $_POST['login'];
-				$dtNasc  = $_POST['dt_nasc'];
-				$genero  = $_POST['Genero'];
-
-				if ($dtNasc != "") {
-					if (strpos($dtNasc, "-") != false) {
-						$strData = explode('-', $dtNasc);
-					} else {
-						$strData = explode('/', $dtNasc);
-					}
-
-					$ano = $strData[2];
-					$mes = $strData[1];
-					$dia = $strData[0];
-
-					$nova_data = $ano . '-' . $mes . '-' . $dia;
-				} else
-					$nova_data = "";
-
-				//Criptografa Senha
-				$md5Senha = md5($_POST['Senha']);
+				$nome = $_POST["Nome"];
+    			$dt_nasc = $_POST["dt_nasc"];
+    			$celular = $_POST["Celular"];
+    			$email = $_POST["email"];
+    			$login = $_POST["login"];
+    			$senha = $_POST["Senha"];
 
 				// Cria conexão
 				$conn = new mysqli($servername, $username, $password, $database);
@@ -70,10 +55,8 @@
 				if ($conn->connect_error) {
 					die("<strong> Falha de conexão: </strong>" . $conn->connect_error);
 				}
-
-				?>
-
-				<?php
+				$sql = "UPDATE personal SET Nome = '$nome', dt_nasc = '$dt_nasc', Celular = '$celular', Email = '$email', Login = '$login', Senha = '$senha' WHERE id = $idPersonal";
+				
 
 				// Faz Update na Base de Dados
 				echo "<div class='w3-responsive w3-card-4'>";

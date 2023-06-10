@@ -201,8 +201,8 @@
                             <div class="w3-row w3-section">
                                 <div class="w3-rest ">
                                 <label class="w3-text-cyan"><b>Gênero</b>*</label> <br>
-                                <span class="w3-text-cyan">Feminino <input type="radio" id="Feminino" name="genero" value="2">  
-                                Masculino <input type="radio" id="Masculino" name="genero" value="1"> </span> 
+                                <span class="w3-text-cyan">Feminino <input type="radio" id="Feminino" name="genero" value="Feminino">  
+                                Masculino <input type="radio" id="Masculino" name="genero" value="masculino"> </span> 
                                 </div>
                             </div>
                             <div class="w3-row w3-section">
