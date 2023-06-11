@@ -18,7 +18,7 @@
             if (isset($_SESSION['tipo'])) {                                  // Se existe usuário logado, verifica o tipo
                 if ($_SESSION['tipo'] == 'aluno'){
                     $url = 'location: /repaginado/aluno.php';	             
-                    header($url);                                         	  // Vai para a página inicial de Administrador
+                    header($url);                                         	  // Vai para a página inicial de Aluno
                     exit();
                 }elseif ($_SESSION['tipo'] == 'personal'){
                     $url = 'location: /repaginado/personal/perfilPersonal.php';	 
@@ -66,8 +66,12 @@
 		<div class="w3-main w3-container" style="margin-left:270px;margin-top:200px;margin-right:270px;">
             <div class="w3-panel w3-padding-large w3-card-4 w3-light-grey" >
                 <h1 class="w3-jumbo">Como Funciona o Nosso Sistema</h1>
-                <img src="imagens/fit1.png" class="w3-round-xxlarge" width="70%" style="max-width:500px">   
-                                
+                <div style="overflow:auto">
+                <img src="imagens/fit1.png" class="w3-round-xxlarge" width="70%" style="max-width:500px; float:left; margin-right:20px;">
+                <p style="font-size: 20px; text-align:justify;">A aplicação web “GrowHealthy” está sendo desenvolvida com foco no segmento de saúde e área fitness. O objetivo é permitir que academias de pequeno e médio porte gerenciem seus alunos com mais facilidade e eficiência, além de fornecer aos personal trainers e nutricionistas uma ferramenta com auxílio de inteligência artificial para desenvolverem treinos e dietas personalizadas para seus alunos</p>
+                </div>
+                <div style="clear:both;"></div>
+            </div>             
                 <!-- Login Fail Modal --> 
                 <!-- -->
                 <?php

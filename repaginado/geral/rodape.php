@@ -8,11 +8,8 @@
             <h2>Nosso sistema</h2>
         </header>
         <div class="w3-container">
-            <p>Conceito: <b>A aplicação web “GrowHealthy” está sendo desenvolvida com foco no segmento de saúde e área 
-            fitness. O objetivo é permitir que academias de pequeno e médio porte gerenciem seus alunos com mais 
-            facilidade e eficiência, além de fornecer aos personal trainers e nutricionistas uma ferramenta com auxílio 
-            de inteligência artificial para desenvolverem treinos e dietas personalizadas para seus alunos</b></p>
-            <p class="w3-small">Alunos envolvidos: Felipe Gabriel de Souza Sphair, João Vitor cidral Varpechoski, João Vitor Dadas de Oliveira, José Alcides Aguayo Mussy, Rafael Visnieski de Oliveira, Vitor Sério Bertoldi</p>
+            <p style="text-align: justify;">Alunos envolvidos: Felipe Gabriel de Souza Sphair, João Vitor cidral Varpechoski, João Vitor Dadas de Oliveira, José Alcides Aguayo Mussy, Rafael Visnieski de Oliveira, Vitor Sério Bertoldi</p>
+            
         </div>
         <footer class="w3-container w3-cyan ">
             <p>PUCPR 2023 - BES terceiro período</p>
