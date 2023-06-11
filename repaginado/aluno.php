@@ -44,7 +44,8 @@
                 <div class="w3-right"><?php 
 				    echo $_SESSION['tipo'] . ":&nbsp;";
 				    echo $_SESSION['nome']; 
-				    ?>&nbsp;<a href="logout.php" class="w3-red" style="text-decoration:none; letter-spacing:1px">&nbsp;Sair&nbsp;</a>
+				    ?>
+                    &nbsp;<a href="logout.php" class="w3-red" style="text-decoration:none; letter-spacing:1px">&nbsp;Sair&nbsp;</a>
 			    </div >
             </div>
         </div>
@@ -133,7 +134,7 @@
                             required>
                             <p>
                                 <input type="button" id="excluir" value="Excluir Conta" class="w3-button w3-block w3-red w3-section w3-padding" onclick="excluirConta()" style="display: block;"> 
-                                <input type="button" id="confirmar" value="Confirmar Exlusão" class="w3-button w3-block w3-red w3-section w3-padding" onclick="" style="display: none;"> 
+                                <input type="button" id="confirmar" value="Confirmar Exlusão" class="w3-button w3-block w3-red w3-section w3-padding" onclick="confirmarExclusão()" style="display: none;"> 
                                 <p></p>
                                 <input type="button" id="cancelar" value="Cancelar Exclusão" class="w3-button w3-block w3-green w3-section w3-padding" onclick="cancelarExclusao()" style="display: none;">
                             </p>
@@ -254,6 +255,11 @@
                 document.getElementById('excluir').style.display = 'none';
                 document.getElementById('confirmar').style.display = 'block';
                 document.getElementById('cancelar').style.display = 'block';
+            }
+            
+            function confirmarExclusão(){
+                window.location.href = "excluir.php";
+
             }
 
             function cancelarExclusao() {

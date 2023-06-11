@@ -73,11 +73,11 @@
 											<input type="hidden" id="Id" name="Id" value="<?php echo $cref; ?>">
 										<p>
 											<label class="w3-text-IE"><b>Nome</b></label>
-											<input class="w3-input w3-border w3-sand" name="Nome" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" title="Nome entre 10 e 100 letras." value="<?php echo $nome; ?>" readonly>
+											<input class="w3-input w3-border w3-sand" name="Nome" type="text" pattern="[a-zA-Z\u00C0-\u00FF ]{10,100}$" title="Nome entre 10 e 100 letras." value="<?php echo $nome; ?>" >
 										</p>
 										<p>
 											<label class="w3-text-IE"><b>Data de Nascimento</b></label>
-											<input class="w3-input w3-border w3-sand" name="dt_nasc" type="text" pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19[0-9][0-9]|20(0[0-9]|1[0-2]))$" maxlength=10 minlength=10 title="dd/mm/aaaa" title="Formato: dd/mm/aaaa" value="<?php echo $dt_nasc; ?>" readonly>
+											<input class="w3-input w3-border w3-sand" name="dt_nasc" type="text" pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19[0-9][0-9]|20(0[0-9]|1[0-2]))$" maxlength=10 minlength=10 title="dd/mm/aaaa" title="Formato: dd/mm/aaaa" value="<?php echo $dt_nasc; ?>" >
 										</p>
 										<p>
 											<label class="w3-text-IE"><b>Celular</b></label>
@@ -109,7 +109,7 @@
 										</p>
 										<p>
 											<input type="button" id="excluir" value="Excluir Conta" class="w3-btn w3-red" onclick="excluirConta()" style="display: block; margin-left: 230px; margin-top:100px;"> 
-											<input type="button" id="confirmar" value="Confirmar Exlusão" class="w3-btn w3-red" onclick="" style="display: none; margin-left: 230px; margin-top:100px;"> 
+											<input type="button" id="confirmar" value="Confirmar Exlusão" class="w3-btn w3-red" onclick="confirmarExclusao()" style="display: none; margin-left: 230px; margin-top:100px;"> 
 											<p></p>
 											<input type="button" id="cancelar" value="Cancelar Exclusão" class="w3-btn w3-green" onclick="cancelarExclusao()" style="display: none; margin-left: 230px; margin-top:10px;">
 										</p>
@@ -155,6 +155,11 @@
             document.getElementById('confirmar').style.display = 'block';
             document.getElementById('cancelar').style.display = 'block';
 		}
+
+		function confirmarExclusao(){
+                window.location.href = "excluirPersonal.php";
+				
+            }
 
 		function cancelarExclusao() {
 			document.getElementById('excluir').style.display = 'block';
